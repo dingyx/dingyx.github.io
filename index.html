@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="dingyx.tech">
-  <title>dyx�Ĳ���</title>
+  <title>dyx&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Android �������������ڹ���">
 <meta property="og:type" content="website">
-<meta property="og:title" content="dyx�Ĳ���">
+<meta property="og:title" content="dyx&#39;s blog">
 <meta property="og:url" content="dingyx.tech/index.html">
-<meta property="og:site_name" content="dyx�Ĳ���">
+<meta property="og:site_name" content="dyx&#39;s blog">
 <meta property="og:description" content="Android �������������ڹ���">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dyx�Ĳ���">
+<meta name="twitter:title" content="dyx&#39;s blog">
 <meta name="twitter:description" content="Android �������������ڹ���">
   
-    <link rel="alternative" href="/atom.xml" title="dyx�Ĳ���" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="dyx&#39;s blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -690,94 +690,6 @@
 
 
   
-    <article id="post-Android-9-Patch-picture" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/02/Android-9-Patch-picture/">Andrid 利用 9-Patch 图片制作聊天框</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/02/Android-9-Patch-picture/" class="archive-article-date">
-  	<time datetime="2016-11-02T15:51:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>什么是9-Patch图片?<br><strong>一种被特殊处理过的png图片，可以指定哪些区域能够拉伸，哪些区域不能拉伸，哪些区域可以显示内容。</strong></p>
-</li>
-<li><p>创建.9.png图片<br>选中一张png图片，右键Create 9-Patch file<br><img src="http://upload-images.jianshu.io/upload_images/3512867-323ac8998352b4a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>注意：9-Patch图片要放在drawable文件夹下，否则编译时会报错。后缀名必须是.9.png。</p>
-</blockquote>
-</li>
-<li><p>编辑.9.png图片<br>打开.9.png图片，选择9-Patch即可对图片进行编辑。<br><strong> 编辑图片时上下左右四个方向的黑线，用来控制图片可拉伸和可显示区域。上和左控制图片可拉伸区域，下和右控制图片可显示区域。</strong><br><img src="http://upload-images.jianshu.io/upload_images/3512867-0c82d5bf86c8f724.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-</li>
-<li><p>使用9.png图片<br>在布局文件中，将TextView的背景设置为制作好的9-Patch图片。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;TextView</div><div class="line">    android:background=&quot;@drawable/chat&quot;</div><div class="line">    android:layout_width=&quot;wrap_content&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:textSize=&quot;20sp&quot;</div><div class="line">    android:paddingTop=&quot;12dp&quot;</div><div class="line">    android:text=&quot;@string/chat_content&quot;/&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>当TextView中内容变化时，显示效果如下:<br><img src="http://upload-images.jianshu.io/upload_images/3512867-f908bd1a9e7143cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/3512867-bb739c01988b6f06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/3512867-66fa92f2555eabe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/02/Android-9-Patch-picture/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Andrid-Multilingual-adaptation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -850,6 +762,94 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/11/02/Andrid-Multilingual-adaptation/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Android-9-Patch-picture" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/02/Android-9-Patch-picture/">Andrid 利用 9-Patch 图片制作聊天框</a>
+    </h1>
+  
+
+        
+        <a href="/2016/11/02/Android-9-Patch-picture/" class="archive-article-date">
+  	<time datetime="2016-11-02T15:51:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>什么是9-Patch图片?<br><strong>一种被特殊处理过的png图片，可以指定哪些区域能够拉伸，哪些区域不能拉伸，哪些区域可以显示内容。</strong></p>
+</li>
+<li><p>创建.9.png图片<br>选中一张png图片，右键Create 9-Patch file<br><img src="http://upload-images.jianshu.io/upload_images/3512867-323ac8998352b4a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>注意：9-Patch图片要放在drawable文件夹下，否则编译时会报错。后缀名必须是.9.png。</p>
+</blockquote>
+</li>
+<li><p>编辑.9.png图片<br>打开.9.png图片，选择9-Patch即可对图片进行编辑。<br><strong> 编辑图片时上下左右四个方向的黑线，用来控制图片可拉伸和可显示区域。上和左控制图片可拉伸区域，下和右控制图片可显示区域。</strong><br><img src="http://upload-images.jianshu.io/upload_images/3512867-0c82d5bf86c8f724.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>使用9.png图片<br>在布局文件中，将TextView的背景设置为制作好的9-Patch图片。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;TextView</div><div class="line">    android:background=&quot;@drawable/chat&quot;</div><div class="line">    android:layout_width=&quot;wrap_content&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:textSize=&quot;20sp&quot;</div><div class="line">    android:paddingTop=&quot;12dp&quot;</div><div class="line">    android:text=&quot;@string/chat_content&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当TextView中内容变化时，显示效果如下:<br><img src="http://upload-images.jianshu.io/upload_images/3512867-f908bd1a9e7143cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/3512867-bb739c01988b6f06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/3512867-66fa92f2555eabe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/11/02/Android-9-Patch-picture/">展开全文 >></a>
         </p>
       
 
