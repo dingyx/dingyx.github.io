@@ -15,7 +15,7 @@
 <meta property="og:url" content="dingyx.tech/2017/09/07/Android-FileObserver/index.html">
 <meta property="og:site_name" content="dyx&#39;s blog">
 <meta property="og:description" content="FileObserver 是一个用来监听文件变化的抽象类，子类必须实现事件处理的方法 onEvent(int, String)  。由于最近做了两个项目都用上就查阅了官方文档，写下这篇文章记录一下。  每一个 FileObserver 实例用来监听一个文件或者文件夹，当文件夹被监听时，任意子文件或文件夹的访问或修改都会触发事件。注意：FileObserver 不能监听到二级子文件夹或文件的变化。">
-<meta property="og:updated_time" content="2017-09-24T16:21:16.552Z">
+<meta property="og:updated_time" content="2017-09-24T16:26:42.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Andrid FileObserver 监听文件变化">
 <meta name="twitter:description" content="FileObserver 是一个用来监听文件变化的抽象类，子类必须实现事件处理的方法 onEvent(int, String)  。由于最近做了两个项目都用上就查阅了官方文档，写下这篇文章记录一下。  每一个 FileObserver 实例用来监听一个文件或者文件夹，当文件夹被监听时，任意子文件或文件夹的访问或修改都会触发事件。注意：FileObserver 不能监听到二级子文件夹或文件的变化。">
@@ -284,8 +284,11 @@
 <li><p>基本用法示例</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// TestFileObserver 文件观察类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestFileObserver</span> <span class="keyword">extends</span> <span class="title">FileObserver</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">// path 为 需要监听的文件或文件夹</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TestFileObserver</span><span class="params">(String path)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(path,FileObserver.ALL_EVENTS);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(<span class="keyword">int</span> event, String path)</span> </span>&#123;</div><div class="line">		<span class="comment">// 如果文件修改了 打印出文件相对监听文件夹的位置</span></div><div class="line">		<span class="keyword">if</span>(event==FileObserver.MODIFY)&#123;</div><div class="line">			Log.d(<span class="string">"edong"</span>,path);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>// 使用方法 1.初始化 TestFileObserver<br>TestFileObserver testFileObserver = new TestFileObserver(“/sdcard/Download/File”);<br>// 2.开始监听<br>testFileObserver.startWatching();</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; 上述代码只是一个简单用法的介绍，在我工作的项目中用到的情况是</div><div class="line">智能家居设备是 Android 系统，在底层实现了一套唤醒机制，当设备唤醒时底层会将唤醒状态，唤醒角度等值写入一个文件。应用层使用 FileObserver 来监听这个文件，当文件变化时认为设备被唤醒，就去读取该文件获取唤醒相关的数值。</div><div class="line"> </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">  ​</div><div class="line"></div><div class="line">  ​</div></pre></td></tr></table></figure></li>
+</li>
 </ul>
+<blockquote>
+<p>上述代码只是一个简单用法的介绍，在我工作的项目中用到的情况是<br>智能家居设备是 Android 系统，在底层实现了一套唤醒机制，当设备唤醒时底层会将唤醒状态，唤醒角度等值写入一个文件。应用层使用 FileObserver 来监听这个文件，当文件变化时认为设备被唤醒，就去读取该文件获取唤醒相关的<br>数值。</p>
+</blockquote>
 
       
 
