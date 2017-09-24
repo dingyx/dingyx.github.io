@@ -5,17 +5,20 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>dingyx</title>
+  <link rel="dns-prefetch" href="dingyx.tech">
+  <title>dyx�Ĳ���</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="dingyx">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="dingyx">
+  <meta name="description" content="Android �������������ڹ���">
+<meta property="og:type" content="website">
+<meta property="og:title" content="dyx�Ĳ���">
+<meta property="og:url" content="dingyx.tech/index.html">
+<meta property="og:site_name" content="dyx�Ĳ���">
+<meta property="og:description" content="Android �������������ڹ���">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dingyx">
+<meta name="twitter:title" content="dyx�Ĳ���">
+<meta name="twitter:description" content="Android �������������ڹ���">
   
-    <link rel="alternative" href="/atom.xml" title="dingyx" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="dyx�Ĳ���" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -47,6 +50,8 @@
 		<hgroup>
 		  <h1 class="header-author"><a href="">dingyx</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">be better</p>
 		
 
 		<nav class="header-menu">
@@ -99,6 +104,8 @@
 			<hgroup>
 			  <h1 class="header-author js-header-author">dingyx</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>be better<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -276,6 +283,501 @@
 
 
   
+    <article id="post-Android-FileObserver" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/07/Android-FileObserver/">Andrid FileObserver 监听文件变化</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/07/Android-FileObserver/" class="archive-article-date">
+  	<time datetime="2017-09-07T11:30:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>FileObserver 是一个用来监听文件变化的抽象类，子类必须实现事件处理的方法 onEvent(int, String)  。由于最近做了两个项目都用上就查阅了官方文档，写下这篇文章记录一下。</p>
+<blockquote>
+<p>每一个 FileObserver 实例用来监听一个文件或者文件夹，当文件夹被监听时，任意子文件或文件夹的访问或修改都会触发事件。<strong>注意：</strong>FileObserver 不能监听到二级子文件夹或文件的变化。</p>
+</blockquote>
+<p>先附上官方的 FileObserver 链接：<a href="https://developer.android.google.cn/reference/android/os/FileObserver.html" target="_blank" rel="external">https://developer.android.google.cn/reference/android/os/FileObserver.html</a></p>
+<ul>
+<li>所有常量 (可监听的事件)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Constant</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ACCESS</td>
+<td style="text-align:center">文件被读取</td>
+</tr>
+<tr>
+<td style="text-align:center">ATTRIB</td>
+<td style="text-align:center">权限 所有者 时间戳被修改</td>
+</tr>
+<tr>
+<td style="text-align:center">CLOSE_NOWRITE</td>
+<td style="text-align:center">打开并关闭了文件夹(未修改)</td>
+</tr>
+<tr>
+<td style="text-align:center">CLOSE_WRITE</td>
+<td style="text-align:center">打开并关闭了文件夹(有修改)</td>
+</tr>
+<tr>
+<td style="text-align:center">CREATE</td>
+<td style="text-align:center">监控的文件夹下创建了子文件或文件夹</td>
+</tr>
+<tr>
+<td style="text-align:center">DELETE</td>
+<td style="text-align:center">监控的文件夹下删除了子文件或文件夹</td>
+</tr>
+<tr>
+<td style="text-align:center">DELETE_SELF</td>
+<td style="text-align:center">被监控的文件或文件夹被删除，监控停止</td>
+</tr>
+<tr>
+<td style="text-align:center">MODIFY</td>
+<td style="text-align:center">文件被修改</td>
+</tr>
+<tr>
+<td style="text-align:center">MOVED_FROM</td>
+<td style="text-align:center">被监控文件夹有子文件或文件夹移走</td>
+</tr>
+<tr>
+<td style="text-align:center">MOVED_TO</td>
+<td style="text-align:center">被监控文件夹有子文件或文件夹被移入</td>
+</tr>
+<tr>
+<td style="text-align:center">MOVE_SELF</td>
+<td style="text-align:center">被监控文件或文件夹被移动</td>
+</tr>
+<tr>
+<td style="text-align:center">OPEN</td>
+<td style="text-align:center">文件或文件夹被打开</td>
+</tr>
+<tr>
+<td style="text-align:center">ALL_EVENTS</td>
+<td style="text-align:center">以上所有事件</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>方法说明</p>
+<ul>
+<li><p>Public constructors 构造方法</p>
+<ul>
+<li><p>FileObserver(String path, int mask)</p>
+<blockquote>
+<p>为 path 路径的文件或者文件夹创建一个文件观察者。<br>path–文件路径 , mask–监听事件类型</p>
+</blockquote>
+</li>
+<li><p>FileObserver(String path)</p>
+<blockquote>
+<p>创建一个文件观察者<br>== FileObserver(path, FileObserver.ALL_EVENTS).)</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Public methods 公共方法</p>
+<ul>
+<li><p>onEvent(int event, String path)           —–void</p>
+<blockquote>
+<p>抽象方法，当监听到文件变化会回调此方法</p>
+<p>event 事件类型 , path 触发事件的文件相对监听文件的路径( 某些情况 path 可能为 null , 像监听的是一个文件，或者 MOVE_SELF 等事件)</p>
+</blockquote>
+</li>
+<li><p>startWatching( )                                       —-void</p>
+<blockquote>
+<p>开始监听</p>
+</blockquote>
+</li>
+<li><p>stopWatching( )                                       —–void</p>
+<blockquote>
+<p>结束监听</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>基本用法示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// TestFileObserver 文件观察类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestFileObserver</span> <span class="keyword">extends</span> <span class="title">FileObserver</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">// path 为 需要监听的文件或文件夹</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TestFileObserver</span><span class="params">(String path)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(path,FileObserver.ALL_EVENTS);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(<span class="keyword">int</span> event, String path)</span> </span>&#123;</div><div class="line">		<span class="comment">// 如果文件修改了 打印出文件相对监听文件夹的位置</span></div><div class="line">		<span class="keyword">if</span>(event==FileObserver.MODIFY)&#123;</div><div class="line">			Log.d(<span class="string">"edong"</span>,path);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>// 使用方法 1.初始化 TestFileObserver<br>TestFileObserver testFileObserver = new TestFileObserver(“/sdcard/Download/File”);<br>// 2.开始监听<br>testFileObserver.startWatching();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; 上述代码只是一个简单用法的介绍，在我工作的项目中用到的情况是</div><div class="line">智能家居设备是 Android 系统，在底层实现了一套唤醒机制，当设备唤醒时底层会将唤醒状态，唤醒角度等值写入一个文件。应用层使用 FileObserver 来监听这个文件，当文件变化时认为设备被唤醒，就去读取该文件获取唤醒相关的数值。</div><div class="line"> </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">  ​</div><div class="line"></div><div class="line">  ​</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/07/Android-FileObserver/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Android-6-0-System-Permissions" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/16/Android-6-0-System-Permissions/">Android 6.0 运行时权限说明与封装</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/16/Android-6-0-System-Permissions/" class="archive-article-date">
+  	<time datetime="2017-01-16T14:53:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="运行时权限说明"><a href="#运行时权限说明" class="headerlink" title="运行时权限说明"></a>运行时权限说明</h3><p>Android 6.0引入了一种新的权限模式，将系统的权限分为正常权限和危险权限。开发者在使用到危险权限相关的功能时不仅要在manifest中配置，还要在代码中进行权限的判断和获取。</p>
+<ul>
+<li>正常权限：不涉及用户的隐私，不需要在运行时向其授权。主要是震动，蓝牙，访问网络等权限。<a href="https://developer.android.google.cn/guide/topics/permissions/normal-permissions.html" target="_blank" rel="external">查看所有正常权限</a></li>
+<li>危险权限：涉及用户的隐私，需要在运行时向其授权。主要是使用相机，拨打电话，收发短信，获取位置信息，读写sd卡等权限。<a href="https://developer.android.google.cn/guide/topics/security/permissions.html#normal-dangerous" target="_blank" rel="external">查看所有危险权限及分组</a><blockquote>
+<p>系统将危险权限进行了分组，当用户对组内的某一个权限进行了授权，下次请求组内其他权限时系统会默认直接授予。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="相关API"><a href="#相关API" class="headerlink" title="相关API"></a>相关API</h3><ul>
+<li>检查权限<br>当应用需要危险权限时，每次执行这一操作都必须检查是否具有该权限。检查是否具有某项权限调用<a href="https://developer.android.google.cn/reference/android/support/v4/content/ContextCompat.html#checkSelfPermission(android.content.Context, java.lang.String" target="_blank" rel="external">ContextCompat.checkSelfPermission()</a>)方法。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*  @return </div><div class="line">*  已授权 PackageManager.PERMISSION_GRANTED</div><div class="line">*  未授权 PERMISSION_DENIED。</div><div class="line">*/</div><div class="line">public static int checkSelfPermission(Context context,</div><div class="line">    String permission) ｛</div><div class="line">｝</div></pre></td></tr></table></figure>
+<ul>
+<li>判断用户是否拒绝过授予权限<br>Android提供了<a href="https://developer.android.google.cn/reference/android/support/v4/app/ActivityCompat.html#shouldShowRequestPermissionRationale(android.app.Activity, java.lang.String" target="_blank" rel="external">shouldShowRequestPermissionRationale()</a>)方法,让APP在用户拒绝权限后，再次请求权限时，可以在合适的时候可以提示用户使用权限的原因。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*  @return </div><div class="line">*  true--用户上次请求权限时被拒绝</div><div class="line">*  false-- 用户已经同意权限，拒绝权限并点击了不再提示</div><div class="line">*/</div><div class="line">public static boolean shouldShowRequestPermissionRationale(</div><div class="line">                        Activity activity,String permission)&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>请求权限<br>如果应用不具有某一权限，在调用该功能时必须先调用<a href="https://developer.android.google.cn/reference/android/support/v4/app/ActivityCompat.html#requestPermissions(android.app.Activity, java.lang.String[], int" target="_blank" rel="external">requestPermissions()</a>)方法，来请求相应的权限。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">* activity         当前activity</div><div class="line">* permission       请求的权限</div><div class="line">* requestCode      请求码</div><div class="line">*/</div><div class="line">public static void requestPermissions(Activity activity,</div><div class="line">                                    String[] permissions,</div><div class="line">                                    int requestCode) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>处理权限的回调</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">/**</div><div class="line">* requestCode     请求码</div><div class="line">* permission      请求的权限</div><div class="line">* grantResults    请求结果  </div><div class="line">*/</div><div class="line">public void onRequestPermissionsResult(int requestCode, </div><div class="line">                                String[] permissions, </div><div class="line">                                int[] grantResults) &#123;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="运行时权限的封装"><a href="#运行时权限的封装" class="headerlink" title="运行时权限的封装"></a>运行时权限的封装</h3><p>首先大家可以<a href="https://developer.android.google.cn/training/permissions/requesting.html" target="_blank" rel="external">点击这里</a>查看官方文档给的请求权限写法。</p>
+<p>为了简化对权限请求的操作，下面介绍一种对权限请求操作封装的方法。代码是看完郭霖的直播课<a href="http://edu.csdn.net/course/detail/3539?locationNum=5&amp;fps=1" target="_blank" rel="external">Android 6.0运行时权限讲解</a>记录后写下来的。</p>
+<ol>
+<li><p>首先定义一个Listener接口，对权限请求操作回调。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public interface PermissionListener &#123;</div><div class="line">    void onGranted();</div><div class="line">    void onDenied(List&lt;String&gt; deniedPermission);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>因为权限请求操作时需要用到Activity作为参数，为了使权限请求可以在util类等其他非Activity类中使用，定义一个ActivityCollector来作为Activity管理器以便在其他类中获取当前运行栈顶Activity。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class ActivityCollector &#123;</div><div class="line"></div><div class="line">    private static List&lt;Activity&gt; activityList = new ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    public static void addActivity(Activity activity) &#123;</div><div class="line">        activityList.add(activity);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void removeActivity(Activity activity) &#123;</div><div class="line">        activityList.remove(activity);</div><div class="line">    &#125;</div><div class="line">	// 获取栈顶Activity</div><div class="line">    public static Activity getTopActivity() &#123;</div><div class="line">        if (activityList.isEmpty())</div><div class="line">            return null;</div><div class="line">        return activityList.get(activityList.size() - 1);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在Android开发中都会用到BaseActivity来对公共内容进行整理封装，然后让其他Activity都继承BaseActivity，接下来我们将权限请求操作封装在BaseActivity中。为了向下兼容，我们让BaseActivity继承v7包中的AppCompatActivity。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">public class BaseActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    public static PermissionListener mListener;</div><div class="line">    public static final int REQUEST_CODE = 1;</div><div class="line"></div><div class="line">	// onCreate/onDestory 中保存Activity</div><div class="line">    @Override</div><div class="line">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        ActivityCollector.addActivity(this);</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    protected void onDestroy() &#123;</div><div class="line">        super.onDestroy();</div><div class="line">        ActivityCollector.removeActivity(this);</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">    public static void requestRuntimePermission(String[] permissions, </div><div class="line">                                      PermissionListener listener) &#123;</div><div class="line">		// 获取栈顶Activity</div><div class="line">        Activity topActivity = ActivityCollector.getTopActivity();</div><div class="line">        if (topActivity == null)</div><div class="line">            return;</div><div class="line">        mListener = listener;</div><div class="line">        // 需要请求的权限列表</div><div class="line">        List&lt;String&gt; requestPermisssionList = new ArrayList&lt;&gt;();</div><div class="line">		// 检查权限  是否已被授权</div><div class="line">        for (String permission : permissions) &#123;</div><div class="line">            if (ActivityCompat.checkSelfPermission(topActivity, permission) </div><div class="line">                      != PackageManager.PERMISSION_GRANTED)</div><div class="line">                // 未授权时添加该权限</div><div class="line">                requestPermisssionList.add(permission);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (requestPermisssionList.isEmpty())</div><div class="line">            // 所有权限已经被授权过 回调Listener onGranted方法 已授权</div><div class="line">            listener.onGranted();</div><div class="line">        else</div><div class="line">			// 进行请求权限操作</div><div class="line">            ActivityCompat.requestPermissions(topActivity,  </div><div class="line">					requestPermisssionList.toArray(new String[requestPermisssionList.size()]), </div><div class="line">					REQUEST_CODE);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">	// 请求权限的回调</div><div class="line">    @Override</div><div class="line">    public void onRequestPermissionsResult(int requestCode, </div><div class="line">			@NonNull String[] permissions, @NonNull int[] grantResults) &#123;</div><div class="line">        super.onRequestPermissionsResult(requestCode, permissions, grantResults);</div><div class="line"></div><div class="line">        switch (requestCode) &#123;</div><div class="line">            case REQUEST_CODE: &#123;</div><div class="line">				</div><div class="line">                List&lt;String&gt; deniedPermissionList = new ArrayList&lt;&gt;();</div><div class="line">				// 检查返回授权结果不为空</div><div class="line">                if (grantResults.length &gt; 0) &#123;</div><div class="line">                    // 判断授权结果</div><div class="line">                    for (int i = 0; i &lt; grantResults.length; i++) &#123;</div><div class="line">                        int result = grantResults[i];</div><div class="line">                        if (result != PackageManager.PERMISSION_GRANTED)</div><div class="line">							// 保存被用户拒绝的权限</div><div class="line">                            deniedPermissionList.add(permissions[i]);</div><div class="line">                    &#125;</div><div class="line">                    if (deniedPermissionList.isEmpty())</div><div class="line">						// 都被授权  回调Listener onGranted方法 已授权</div><div class="line">                        mListener.onGranted();</div><div class="line">                    else</div><div class="line">						// 有权限被拒绝 回调Listner onDeynied方法</div><div class="line">                        mListener.onDenied(deniedPermissionList);</div><div class="line">                &#125;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">            default:</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>封装完成后，使用危险权限相关操作时在Activity中只需要重写requestRuntimePermission()就可以，其他类中则只需要调用BaseActivity.requestRuntimePermission()方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">BaseActivity.requestRuntimePermission(</div><div class="line">				new String[]&#123;Manifest.permission.ACCESS_COARSE_LOCATION&#125;, </div><div class="line">				new PermissionListener() &#123;</div><div class="line"></div><div class="line">      @Override</div><div class="line">      public void onGranted() &#123;</div><div class="line">        // 已被授权 可执行相应权限操作</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      @Override</div><div class="line">      public void onDenied(List&lt;String&gt; deniedPermission) &#123;</div><div class="line">          // 权限被拒绝</div><div class="line"></div><div class="line">      &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/16/Android-6-0-System-Permissions/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Android-Immersive-Full-Screen-Mode" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/03/Android-Immersive-Full-Screen-Mode/">Android 沉浸式模式与常见状态栏和导航栏</a>
+    </h1>
+  
+
+        
+        <a href="/2016/11/03/Android-Immersive-Full-Screen-Mode/" class="archive-article-date">
+  	<time datetime="2016-11-03T03:56:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android沉浸式模式"><a href="#Android沉浸式模式" class="headerlink" title="Android沉浸式模式"></a>Android沉浸式模式</h1><p>官方称沉浸式状态栏为沉浸式模式。</p>
+<ul>
+<li><p>什么是沉浸式？<br><strong>沉浸式就是让人专注当前的(由设计者营造)情境下感到愉悦和满足，而忘记真实的情境。</strong>    </p>
+</li>
+<li><p>什么是Android中的沉浸式？<br><strong>当启用该模式，应用程序的界面将占据整个屏幕，自动隐藏系统的状态栏和导航栏，让应用程序内容可以在最大显示范围呈现，增加大屏体验，而当需要查看通知的时候只需要从顶部向下滑动就能呼出通知栏。</strong></p>
+</li>
+<li><p>一个应用程序界面有有如下元素：<br><img src="http://upload-images.jianshu.io/upload_images/3512867-13ce9110b7235f7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>而打造沉浸式模式的用户体验就是要将这些系统元素全部隐藏，只留下主题内容部分。先看一下效果图：<br><img src="http://upload-images.jianshu.io/upload_images/3512867-94818973391eec0d.gif?imageMogr2/auto-orient/strip" alt=""></p>
+</li>
+</ul>
+<p>进入程序时，自动隐藏了状态栏和导航栏。当用户从顶部向下滑动就能呼出半透明的状态栏和导航栏。</p>
+<p>具体代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line">    </div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public void onWindowFocusChanged(boolean hasFocus) &#123;</div><div class="line">        super.onWindowFocusChanged(hasFocus);</div><div class="line"></div><div class="line">        View mDecorView = getWindow().getDecorView();</div><div class="line"></div><div class="line">        mDecorView.setSystemUiVisibility(</div><div class="line">                View.SYSTEM_UI_FLAG_LAYOUT_STABLE</div><div class="line">                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION</div><div class="line">                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN</div><div class="line">                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar</div><div class="line">                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar</div><div class="line">                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>上面使用的SYSTEM_UI_FLAG_IMMERSIVE_STICKY官方称为粘性沉浸式模式。View.SYSTEM_UI_FLAG_IMMERSIVE为非粘性沉浸式，非粘性沉浸式状态栏和导航栏显示后不再自动隐藏。</li>
+</ul>
+<blockquote>
+<p>注意：onWindowFocusChanged方法里面的代码不能直接写在onCrate方法中，如果这么写当应用处于后台Stoped状态，下次启动应用便执行不到处理沉浸式的代码。Activity生命周期中，真正的visible时间点是onWindowFocusChanged()函数被执行时，所以我们将这段代码写在这个方法中。</p>
+</blockquote>
+<p>可以参考官方文档：<a href="https://developer.android.google.cn/training/system-ui/immersive.html" target="_blank" rel="external">https://developer.android.google.cn</a><br>中文翻译版：<a href="http://hukai.me/android-training-course-in-chinese/ui/system-ui/immersive.html" target="_blank" rel="external">http://hukai.me/android-training-course-in-chinese</a></p>
+<h1 id="其他常见状态栏和导航栏效果"><a href="#其他常见状态栏和导航栏效果" class="headerlink" title="其他常见状态栏和导航栏效果"></a>其他常见状态栏和导航栏效果</h1><ul>
+<li>隐藏ActionBar<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ActionBar actionBar = getSupportActionBar();</div><div class="line">actionBar.hide();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面的代码需要在放在setContentView方法之前，否则会出现ActionBar显示后再隐藏。如果整个应用没有用到ActionBar我们可以直接在AndroidManifest.xml中将application的theme设置为NoActionBar，如果只是某个activity不用也可以将这个activity的theme设置为NoActionBar。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;activity android:name=&quot;.MainActivity&quot;</div><div class="line">     android:theme=&quot;@style/Theme.AppCompat.Light.NoActionBar&quot;&gt;</div><div class="line">     &lt;intent-filter&gt;</div><div class="line">           &lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;</div><div class="line">         &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;</div><div class="line">    &lt;/intent-filter&gt;</div><div class="line">&lt;/activity&gt;</div></pre></td></tr></table></figure></p>
+<p>效果图如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3512867-777cc5d17ae4f3bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li>透明状态栏和导航栏</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//透明状态栏和导航栏，隐藏ActionBar</div><div class="line">getSupportActionBar().hide();</div><div class="line"></div><div class="line">getWindow().getDecorView().setSystemUiVisibility(</div><div class="line">	View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);</div><div class="line"></div><div class="line">getWindow().setNavigationBarColor(Color.TRANSPARENT);</div><div class="line">getWindow().setStatusBarColor(Color.TRANSPARENT);</div></pre></td></tr></table></figure>
+<p>效果图如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3512867-787824eceb48a743.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/11/03/Android-Immersive-Full-Screen-Mode/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Android-9-Patch-picture" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/02/Android-9-Patch-picture/">Andrid 利用 9-Patch 图片制作聊天框</a>
+    </h1>
+  
+
+        
+        <a href="/2016/11/02/Android-9-Patch-picture/" class="archive-article-date">
+  	<time datetime="2016-11-02T15:51:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>什么是9-Patch图片?<br><strong>一种被特殊处理过的png图片，可以指定哪些区域能够拉伸，哪些区域不能拉伸，哪些区域可以显示内容。</strong></p>
+</li>
+<li><p>创建.9.png图片<br>选中一张png图片，右键Create 9-Patch file<br><img src="http://upload-images.jianshu.io/upload_images/3512867-323ac8998352b4a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>注意：9-Patch图片要放在drawable文件夹下，否则编译时会报错。后缀名必须是.9.png。</p>
+</blockquote>
+</li>
+<li><p>编辑.9.png图片<br>打开.9.png图片，选择9-Patch即可对图片进行编辑。<br><strong> 编辑图片时上下左右四个方向的黑线，用来控制图片可拉伸和可显示区域。上和左控制图片可拉伸区域，下和右控制图片可显示区域。</strong><br><img src="http://upload-images.jianshu.io/upload_images/3512867-0c82d5bf86c8f724.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>使用9.png图片<br>在布局文件中，将TextView的背景设置为制作好的9-Patch图片。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;TextView</div><div class="line">    android:background=&quot;@drawable/chat&quot;</div><div class="line">    android:layout_width=&quot;wrap_content&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:textSize=&quot;20sp&quot;</div><div class="line">    android:paddingTop=&quot;12dp&quot;</div><div class="line">    android:text=&quot;@string/chat_content&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当TextView中内容变化时，显示效果如下:<br><img src="http://upload-images.jianshu.io/upload_images/3512867-f908bd1a9e7143cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/3512867-bb739c01988b6f06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/3512867-66fa92f2555eabe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/11/02/Android-9-Patch-picture/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Andrid-Multilingual-adaptation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -296,7 +798,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="应用程序根据系统设置语言实现多语言适配"><a href="#应用程序根据系统设置语言实现多语言适配" class="headerlink" title="应用程序根据系统设置语言实现多语言适配"></a>应用程序根据系统设置语言实现多语言适配</h2><p>应用程序默认只要配置不同语言的文件，在启动应用时都会根据系统语言而加载对应的语言资源文件。例如支付宝，微信，微博等都实现了中英文的适配。下面的例子我们将实现中文的适配。</p>
+        <h3 id="应用程序根据系统设置语言实现多语言适配"><a href="#应用程序根据系统设置语言实现多语言适配" class="headerlink" title="应用程序根据系统设置语言实现多语言适配"></a>应用程序根据系统设置语言实现多语言适配</h3><p>应用程序默认只要配置不同语言的文件，在启动应用时都会根据系统语言而加载对应的语言资源文件。例如支付宝，微信，微博等都实现了中英文的适配。下面的例子我们将实现中文的适配。</p>
 <ul>
 <li><p>创建相应语言的文件<br>右键res文件夹File–&gt;New–&gt;Android resource file选择Locale看到如下界面：<br>我们选择新增的语言为中文，将文件名设为strings<br><img src="http://upload-images.jianshu.io/upload_images/3512867-c87f25958de5bc9c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>点击确定后可以看到生成如下目录及文件（新增了values-zh文件夹和strings.xml文件）：<br><img src="http://upload-images.jianshu.io/upload_images/3512867-8163672f1bbc2c88?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 </li>
@@ -314,7 +816,7 @@
 <blockquote>
 <p>注意：当应用程序没有退出，进入系统修改了语言设置。再次进入时应用会重新载入。类似于横竖屏切换时的应用生命周期。</p>
 </blockquote>
-<h2 id="应用内实现语言设置"><a href="#应用内实现语言设置" class="headerlink" title="应用内实现语言设置"></a>应用内实现语言设置</h2><ul>
+<h3 id="应用内实现语言设置"><a href="#应用内实现语言设置" class="headerlink" title="应用内实现语言设置"></a>应用内实现语言设置</h3><ul>
 <li>实现效果<br>应用内有一个设置按钮，点击设置时弹出dialog提示语言选择。用户选择完成后，重启应用并按用户设置加载对应的语言。</li>
 </ul>
 <p>点击设置按钮出现如下界面：<br><img src="http://upload-images.jianshu.io/upload_images/3512867-dabb40c4532c85ec?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>

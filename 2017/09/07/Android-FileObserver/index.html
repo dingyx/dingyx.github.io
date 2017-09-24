@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="dingyx.tech">
-  <title>Archives: 2017/9 | dyx�Ĳ���</title>
+  <title>Andrid FileObserver 监听文件变化 | dyx�Ĳ���</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Android �������������ڹ���">
-<meta property="og:type" content="website">
-<meta property="og:title" content="dyx�Ĳ���">
-<meta property="og:url" content="dingyx.tech/archives/2017/09/index.html">
+  <meta name="description" content="FileObserver 是一个用来监听文件变化的抽象类，子类必须实现事件处理的方法 onEvent(int, String)  。由于最近做了两个项目都用上就查阅了官方文档，写下这篇文章记录一下。  每一个 FileObserver 实例用来监听一个文件或者文件夹，当文件夹被监听时，任意子文件或文件夹的访问或修改都会触发事件。注意：FileObserver 不能监听到二级子文件夹或文件的变化。">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Andrid FileObserver 监听文件变化">
+<meta property="og:url" content="dingyx.tech/2017/09/07/Android-FileObserver/index.html">
 <meta property="og:site_name" content="dyx�Ĳ���">
-<meta property="og:description" content="Android �������������ڹ���">
+<meta property="og:description" content="FileObserver 是一个用来监听文件变化的抽象类，子类必须实现事件处理的方法 onEvent(int, String)  。由于最近做了两个项目都用上就查阅了官方文档，写下这篇文章记录一下。  每一个 FileObserver 实例用来监听一个文件或者文件夹，当文件夹被监听时，任意子文件或文件夹的访问或修改都会触发事件。注意：FileObserver 不能监听到二级子文件夹或文件的变化。">
+<meta property="og:updated_time" content="2017-09-24T16:21:16.552Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dyx�Ĳ���">
-<meta name="twitter:description" content="Android �������������ڹ���">
+<meta name="twitter:title" content="Andrid FileObserver 监听文件变化">
+<meta name="twitter:description" content="FileObserver 是一个用来监听文件变化的抽象类，子类必须实现事件处理的方法 onEvent(int, String)  。由于最近做了两个项目都用上就查阅了官方文档，写下这篇文章记录一下。  每一个 FileObserver 实例用来监听一个文件或者文件夹，当文件夹被监听时，任意子文件或文件夹的访问或修改都会触发事件。注意：FileObserver 不能监听到二级子文件夹或文件的变化。">
   
     <link rel="alternative" href="/atom.xml" title="dyx�Ĳ���" type="application/atom+xml">
   
@@ -148,90 +150,150 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Android-FileObserver" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/16/test-my-site/" class="archive-article-date">
-  	<time datetime="2017-09-15T18:13:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/16/test-my-site/">test_my_site</a>
+    <h1 class="article-title" itemprop="name">
+      Andrid FileObserver 监听文件变化
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/16/hello-world/" class="archive-article-date">
-  	<time datetime="2017-09-15T18:09:04.365Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/07/Android-FileObserver/" class="archive-article-date">
+        
+        <a href="/2017/09/07/Android-FileObserver/" class="archive-article-date">
   	<time datetime="2017-09-07T11:30:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-07</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/07/Android-FileObserver/">Andrid FileObserver 监听文件变化</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>FileObserver 是一个用来监听文件变化的抽象类，子类必须实现事件处理的方法 onEvent(int, String)  。由于最近做了两个项目都用上就查阅了官方文档，写下这篇文章记录一下。</p>
+<blockquote>
+<p>每一个 FileObserver 实例用来监听一个文件或者文件夹，当文件夹被监听时，任意子文件或文件夹的访问或修改都会触发事件。<strong>注意：</strong>FileObserver 不能监听到二级子文件夹或文件的变化。</p>
+</blockquote>
+<p>先附上官方的 FileObserver 链接：<a href="https://developer.android.google.cn/reference/android/os/FileObserver.html" target="_blank" rel="external">https://developer.android.google.cn/reference/android/os/FileObserver.html</a></p>
+<ul>
+<li>所有常量 (可监听的事件)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Constant</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ACCESS</td>
+<td style="text-align:center">文件被读取</td>
+</tr>
+<tr>
+<td style="text-align:center">ATTRIB</td>
+<td style="text-align:center">权限 所有者 时间戳被修改</td>
+</tr>
+<tr>
+<td style="text-align:center">CLOSE_NOWRITE</td>
+<td style="text-align:center">打开并关闭了文件夹(未修改)</td>
+</tr>
+<tr>
+<td style="text-align:center">CLOSE_WRITE</td>
+<td style="text-align:center">打开并关闭了文件夹(有修改)</td>
+</tr>
+<tr>
+<td style="text-align:center">CREATE</td>
+<td style="text-align:center">监控的文件夹下创建了子文件或文件夹</td>
+</tr>
+<tr>
+<td style="text-align:center">DELETE</td>
+<td style="text-align:center">监控的文件夹下删除了子文件或文件夹</td>
+</tr>
+<tr>
+<td style="text-align:center">DELETE_SELF</td>
+<td style="text-align:center">被监控的文件或文件夹被删除，监控停止</td>
+</tr>
+<tr>
+<td style="text-align:center">MODIFY</td>
+<td style="text-align:center">文件被修改</td>
+</tr>
+<tr>
+<td style="text-align:center">MOVED_FROM</td>
+<td style="text-align:center">被监控文件夹有子文件或文件夹移走</td>
+</tr>
+<tr>
+<td style="text-align:center">MOVED_TO</td>
+<td style="text-align:center">被监控文件夹有子文件或文件夹被移入</td>
+</tr>
+<tr>
+<td style="text-align:center">MOVE_SELF</td>
+<td style="text-align:center">被监控文件或文件夹被移动</td>
+</tr>
+<tr>
+<td style="text-align:center">OPEN</td>
+<td style="text-align:center">文件或文件夹被打开</td>
+</tr>
+<tr>
+<td style="text-align:center">ALL_EVENTS</td>
+<td style="text-align:center">以上所有事件</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>方法说明</p>
+<ul>
+<li><p>Public constructors 构造方法</p>
+<ul>
+<li><p>FileObserver(String path, int mask)</p>
+<blockquote>
+<p>为 path 路径的文件或者文件夹创建一个文件观察者。<br>path–文件路径 , mask–监听事件类型</p>
+</blockquote>
+</li>
+<li><p>FileObserver(String path)</p>
+<blockquote>
+<p>创建一个文件观察者<br>== FileObserver(path, FileObserver.ALL_EVENTS).)</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Public methods 公共方法</p>
+<ul>
+<li><p>onEvent(int event, String path)           —–void</p>
+<blockquote>
+<p>抽象方法，当监听到文件变化会回调此方法</p>
+<p>event 事件类型 , path 触发事件的文件相对监听文件的路径( 某些情况 path 可能为 null , 像监听的是一个文件，或者 MOVE_SELF 等事件)</p>
+</blockquote>
+</li>
+<li><p>startWatching( )                                       —-void</p>
+<blockquote>
+<p>开始监听</p>
+</blockquote>
+</li>
+<li><p>stopWatching( )                                       —–void</p>
+<blockquote>
+<p>结束监听</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>基本用法示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// TestFileObserver 文件观察类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestFileObserver</span> <span class="keyword">extends</span> <span class="title">FileObserver</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">// path 为 需要监听的文件或文件夹</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TestFileObserver</span><span class="params">(String path)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(path,FileObserver.ALL_EVENTS);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEvent</span><span class="params">(<span class="keyword">int</span> event, String path)</span> </span>&#123;</div><div class="line">		<span class="comment">// 如果文件修改了 打印出文件相对监听文件夹的位置</span></div><div class="line">		<span class="keyword">if</span>(event==FileObserver.MODIFY)&#123;</div><div class="line">			Log.d(<span class="string">"edong"</span>,path);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>// 使用方法 1.初始化 TestFileObserver<br>TestFileObserver testFileObserver = new TestFileObserver(“/sdcard/Download/File”);<br>// 2.开始监听<br>testFileObserver.startWatching();</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; 上述代码只是一个简单用法的介绍，在我工作的项目中用到的情况是</div><div class="line">智能家居设备是 Android 系统，在底层实现了一套唤醒机制，当设备唤醒时底层会将唤醒状态，唤醒角度等值写入一个文件。应用层使用 FileObserver 来监听这个文件，当文件变化时认为设备被唤醒，就去读取该文件获取唤醒相关的数值。</div><div class="line"> </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">  ​</div><div class="line"></div><div class="line">  ​</div></pre></td></tr></table></figure></li>
+</ul>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -243,19 +305,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:dingyx.tech/2017/09/07/Android-FileObserver/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/09/16/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/01/16/Android-6-0-System-Permissions/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 6.0 运行时权限说明与封装</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -278,8 +436,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

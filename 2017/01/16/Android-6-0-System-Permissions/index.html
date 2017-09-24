@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="dingyx.tech">
-  <title>Archives: 2017/9 | dyx�Ĳ���</title>
+  <title>Android 6.0 运行时权限说明与封装 | dyx�Ĳ���</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Android �������������ڹ���">
-<meta property="og:type" content="website">
-<meta property="og:title" content="dyx�Ĳ���">
-<meta property="og:url" content="dingyx.tech/archives/2017/09/index.html">
+  <meta name="description" content="运行时权限说明Android 6.0引入了一种新的权限模式，将系统的权限分为正常权限和危险权限。开发者在使用到危险权限相关的功能时不仅要在manifest中配置，还要在代码中进行权限的判断和获取。  正常权限：不涉及用户的隐私，不需要在运行时向其授权。主要是震动，蓝牙，访问网络等权限。查看所有正常权限 危险权限：涉及用户的隐私，需要在运行时向其授权。主要是使用相机，拨打电话，收发短信，获取位置信息">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 6.0 运行时权限说明与封装">
+<meta property="og:url" content="dingyx.tech/2017/01/16/Android-6-0-System-Permissions/index.html">
 <meta property="og:site_name" content="dyx�Ĳ���">
-<meta property="og:description" content="Android �������������ڹ���">
+<meta property="og:description" content="运行时权限说明Android 6.0引入了一种新的权限模式，将系统的权限分为正常权限和危险权限。开发者在使用到危险权限相关的功能时不仅要在manifest中配置，还要在代码中进行权限的判断和获取。  正常权限：不涉及用户的隐私，不需要在运行时向其授权。主要是震动，蓝牙，访问网络等权限。查看所有正常权限 危险权限：涉及用户的隐私，需要在运行时向其授权。主要是使用相机，拨打电话，收发短信，获取位置信息">
+<meta property="og:updated_time" content="2017-09-24T16:17:10.089Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dyx�Ĳ���">
-<meta name="twitter:description" content="Android �������������ڹ���">
+<meta name="twitter:title" content="Android 6.0 运行时权限说明与封装">
+<meta name="twitter:description" content="运行时权限说明Android 6.0引入了一种新的权限模式，将系统的权限分为正常权限和危险权限。开发者在使用到危险权限相关的功能时不仅要在manifest中配置，还要在代码中进行权限的判断和获取。  正常权限：不涉及用户的隐私，不需要在运行时向其授权。主要是震动，蓝牙，访问网络等权限。查看所有正常权限 危险权限：涉及用户的隐私，需要在运行时向其授权。主要是使用相机，拨打电话，收发短信，获取位置信息">
   
     <link rel="alternative" href="/atom.xml" title="dyx�Ĳ���" type="application/atom+xml">
   
@@ -148,90 +150,73 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Android-6-0-System-Permissions" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android 6.0 运行时权限说明与封装
+    </h1>
+  
+
+        
+        <a href="/2017/01/16/Android-6-0-System-Permissions/" class="archive-article-date">
+  	<time datetime="2017-01-16T14:53:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-16</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="运行时权限说明"><a href="#运行时权限说明" class="headerlink" title="运行时权限说明"></a>运行时权限说明</h3><p>Android 6.0引入了一种新的权限模式，将系统的权限分为正常权限和危险权限。开发者在使用到危险权限相关的功能时不仅要在manifest中配置，还要在代码中进行权限的判断和获取。</p>
+<ul>
+<li>正常权限：不涉及用户的隐私，不需要在运行时向其授权。主要是震动，蓝牙，访问网络等权限。<a href="https://developer.android.google.cn/guide/topics/permissions/normal-permissions.html" target="_blank" rel="external">查看所有正常权限</a></li>
+<li>危险权限：涉及用户的隐私，需要在运行时向其授权。主要是使用相机，拨打电话，收发短信，获取位置信息，读写sd卡等权限。<a href="https://developer.android.google.cn/guide/topics/security/permissions.html#normal-dangerous" target="_blank" rel="external">查看所有危险权限及分组</a><blockquote>
+<p>系统将危险权限进行了分组，当用户对组内的某一个权限进行了授权，下次请求组内其他权限时系统会默认直接授予。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="相关API"><a href="#相关API" class="headerlink" title="相关API"></a>相关API</h3><ul>
+<li>检查权限<br>当应用需要危险权限时，每次执行这一操作都必须检查是否具有该权限。检查是否具有某项权限调用<a href="https://developer.android.google.cn/reference/android/support/v4/content/ContextCompat.html#checkSelfPermission(android.content.Context, java.lang.String" target="_blank" rel="external">ContextCompat.checkSelfPermission()</a>)方法。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*  @return </div><div class="line">*  已授权 PackageManager.PERMISSION_GRANTED</div><div class="line">*  未授权 PERMISSION_DENIED。</div><div class="line">*/</div><div class="line">public static int checkSelfPermission(Context context,</div><div class="line">    String permission) ｛</div><div class="line">｝</div></pre></td></tr></table></figure>
+<ul>
+<li>判断用户是否拒绝过授予权限<br>Android提供了<a href="https://developer.android.google.cn/reference/android/support/v4/app/ActivityCompat.html#shouldShowRequestPermissionRationale(android.app.Activity, java.lang.String" target="_blank" rel="external">shouldShowRequestPermissionRationale()</a>)方法,让APP在用户拒绝权限后，再次请求权限时，可以在合适的时候可以提示用户使用权限的原因。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*  @return </div><div class="line">*  true--用户上次请求权限时被拒绝</div><div class="line">*  false-- 用户已经同意权限，拒绝权限并点击了不再提示</div><div class="line">*/</div><div class="line">public static boolean shouldShowRequestPermissionRationale(</div><div class="line">                        Activity activity,String permission)&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>请求权限<br>如果应用不具有某一权限，在调用该功能时必须先调用<a href="https://developer.android.google.cn/reference/android/support/v4/app/ActivityCompat.html#requestPermissions(android.app.Activity, java.lang.String[], int" target="_blank" rel="external">requestPermissions()</a>)方法，来请求相应的权限。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">* activity         当前activity</div><div class="line">* permission       请求的权限</div><div class="line">* requestCode      请求码</div><div class="line">*/</div><div class="line">public static void requestPermissions(Activity activity,</div><div class="line">                                    String[] permissions,</div><div class="line">                                    int requestCode) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>处理权限的回调</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">/**</div><div class="line">* requestCode     请求码</div><div class="line">* permission      请求的权限</div><div class="line">* grantResults    请求结果  </div><div class="line">*/</div><div class="line">public void onRequestPermissionsResult(int requestCode, </div><div class="line">                                String[] permissions, </div><div class="line">                                int[] grantResults) &#123;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="运行时权限的封装"><a href="#运行时权限的封装" class="headerlink" title="运行时权限的封装"></a>运行时权限的封装</h3><p>首先大家可以<a href="https://developer.android.google.cn/training/permissions/requesting.html" target="_blank" rel="external">点击这里</a>查看官方文档给的请求权限写法。</p>
+<p>为了简化对权限请求的操作，下面介绍一种对权限请求操作封装的方法。代码是看完郭霖的直播课<a href="http://edu.csdn.net/course/detail/3539?locationNum=5&amp;fps=1" target="_blank" rel="external">Android 6.0运行时权限讲解</a>记录后写下来的。</p>
+<ol>
+<li><p>首先定义一个Listener接口，对权限请求操作回调。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public interface PermissionListener &#123;</div><div class="line">    void onGranted();</div><div class="line">    void onDenied(List&lt;String&gt; deniedPermission);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>因为权限请求操作时需要用到Activity作为参数，为了使权限请求可以在util类等其他非Activity类中使用，定义一个ActivityCollector来作为Activity管理器以便在其他类中获取当前运行栈顶Activity。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class ActivityCollector &#123;</div><div class="line"></div><div class="line">    private static List&lt;Activity&gt; activityList = new ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    public static void addActivity(Activity activity) &#123;</div><div class="line">        activityList.add(activity);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void removeActivity(Activity activity) &#123;</div><div class="line">        activityList.remove(activity);</div><div class="line">    &#125;</div><div class="line">	// 获取栈顶Activity</div><div class="line">    public static Activity getTopActivity() &#123;</div><div class="line">        if (activityList.isEmpty())</div><div class="line">            return null;</div><div class="line">        return activityList.get(activityList.size() - 1);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在Android开发中都会用到BaseActivity来对公共内容进行整理封装，然后让其他Activity都继承BaseActivity，接下来我们将权限请求操作封装在BaseActivity中。为了向下兼容，我们让BaseActivity继承v7包中的AppCompatActivity。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">public class BaseActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    public static PermissionListener mListener;</div><div class="line">    public static final int REQUEST_CODE = 1;</div><div class="line"></div><div class="line">	// onCreate/onDestory 中保存Activity</div><div class="line">    @Override</div><div class="line">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        ActivityCollector.addActivity(this);</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    protected void onDestroy() &#123;</div><div class="line">        super.onDestroy();</div><div class="line">        ActivityCollector.removeActivity(this);</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">    public static void requestRuntimePermission(String[] permissions, </div><div class="line">                                      PermissionListener listener) &#123;</div><div class="line">		// 获取栈顶Activity</div><div class="line">        Activity topActivity = ActivityCollector.getTopActivity();</div><div class="line">        if (topActivity == null)</div><div class="line">            return;</div><div class="line">        mListener = listener;</div><div class="line">        // 需要请求的权限列表</div><div class="line">        List&lt;String&gt; requestPermisssionList = new ArrayList&lt;&gt;();</div><div class="line">		// 检查权限  是否已被授权</div><div class="line">        for (String permission : permissions) &#123;</div><div class="line">            if (ActivityCompat.checkSelfPermission(topActivity, permission) </div><div class="line">                      != PackageManager.PERMISSION_GRANTED)</div><div class="line">                // 未授权时添加该权限</div><div class="line">                requestPermisssionList.add(permission);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (requestPermisssionList.isEmpty())</div><div class="line">            // 所有权限已经被授权过 回调Listener onGranted方法 已授权</div><div class="line">            listener.onGranted();</div><div class="line">        else</div><div class="line">			// 进行请求权限操作</div><div class="line">            ActivityCompat.requestPermissions(topActivity,  </div><div class="line">					requestPermisssionList.toArray(new String[requestPermisssionList.size()]), </div><div class="line">					REQUEST_CODE);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">	// 请求权限的回调</div><div class="line">    @Override</div><div class="line">    public void onRequestPermissionsResult(int requestCode, </div><div class="line">			@NonNull String[] permissions, @NonNull int[] grantResults) &#123;</div><div class="line">        super.onRequestPermissionsResult(requestCode, permissions, grantResults);</div><div class="line"></div><div class="line">        switch (requestCode) &#123;</div><div class="line">            case REQUEST_CODE: &#123;</div><div class="line">				</div><div class="line">                List&lt;String&gt; deniedPermissionList = new ArrayList&lt;&gt;();</div><div class="line">				// 检查返回授权结果不为空</div><div class="line">                if (grantResults.length &gt; 0) &#123;</div><div class="line">                    // 判断授权结果</div><div class="line">                    for (int i = 0; i &lt; grantResults.length; i++) &#123;</div><div class="line">                        int result = grantResults[i];</div><div class="line">                        if (result != PackageManager.PERMISSION_GRANTED)</div><div class="line">							// 保存被用户拒绝的权限</div><div class="line">                            deniedPermissionList.add(permissions[i]);</div><div class="line">                    &#125;</div><div class="line">                    if (deniedPermissionList.isEmpty())</div><div class="line">						// 都被授权  回调Listener onGranted方法 已授权</div><div class="line">                        mListener.onGranted();</div><div class="line">                    else</div><div class="line">						// 有权限被拒绝 回调Listner onDeynied方法</div><div class="line">                        mListener.onDenied(deniedPermissionList);</div><div class="line">                &#125;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">            default:</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>封装完成后，使用危险权限相关操作时在Activity中只需要重写requestRuntimePermission()就可以，其他类中则只需要调用BaseActivity.requestRuntimePermission()方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">BaseActivity.requestRuntimePermission(</div><div class="line">				new String[]&#123;Manifest.permission.ACCESS_COARSE_LOCATION&#125;, </div><div class="line">				new PermissionListener() &#123;</div><div class="line"></div><div class="line">      @Override</div><div class="line">      public void onGranted() &#123;</div><div class="line">        // 已被授权 可执行相应权限操作</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      @Override</div><div class="line">      public void onDenied(List&lt;String&gt; deniedPermission) &#123;</div><div class="line">          // 权限被拒绝</div><div class="line"></div><div class="line">      &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/16/test-my-site/" class="archive-article-date">
-  	<time datetime="2017-09-15T18:13:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/16/test-my-site/">test_my_site</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/16/hello-world/" class="archive-article-date">
-  	<time datetime="2017-09-15T18:09:04.365Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/07/Android-FileObserver/" class="archive-article-date">
-  	<time datetime="2017-09-07T11:30:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/07/Android-FileObserver/">Andrid FileObserver 监听文件变化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -243,19 +228,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:dingyx.tech/2017/01/16/Android-6-0-System-Permissions/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/09/07/Android-FileObserver/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Andrid FileObserver 监听文件变化
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2016/11/03/Android-Immersive-Full-Screen-Mode/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 沉浸式模式与常见状态栏和导航栏</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -278,8 +359,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
