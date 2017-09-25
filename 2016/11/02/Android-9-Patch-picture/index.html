@@ -8,22 +8,22 @@
   <link rel="dns-prefetch" href="dingyx.tech">
   <title>Andrid 利用 9-Patch 图片制作聊天框 | dyx&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是9-Patch图片?一种被特殊处理过的png图片，可以指定哪些区域能够拉伸，哪些区域不能拉伸，哪些区域可以显示内容。  使用场景主要是用于对话框等拉伸能够不变形的场景  创建.9.png图片选中一张png图片，右键Create 9-Patch file">
+  <meta name="description" content="什么是9-Patch图片?一种被特殊处理过的 png 图片，可以指定哪些区域能够拉伸，哪些区域不能拉伸，哪些区域可以显示内容。  使用场景主要是用于对话框等拉伸能够不变形的场景  创建 .9.png 图片选中一张 png 图片，右键 Create 9-Patch file">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Andrid 利用 9-Patch 图片制作聊天框">
 <meta property="og:url" content="dingyx.tech/2016/11/02/Android-9-Patch-picture/index.html">
 <meta property="og:site_name" content="dyx&#39;s blog">
-<meta property="og:description" content="什么是9-Patch图片?一种被特殊处理过的png图片，可以指定哪些区域能够拉伸，哪些区域不能拉伸，哪些区域可以显示内容。  使用场景主要是用于对话框等拉伸能够不变形的场景  创建.9.png图片选中一张png图片，右键Create 9-Patch file">
+<meta property="og:description" content="什么是9-Patch图片?一种被特殊处理过的 png 图片，可以指定哪些区域能够拉伸，哪些区域不能拉伸，哪些区域可以显示内容。  使用场景主要是用于对话框等拉伸能够不变形的场景  创建 .9.png 图片选中一张 png 图片，右键 Create 9-Patch file">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3512867-323ac8998352b4a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3512867-0c82d5bf86c8f724.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3512867-f908bd1a9e7143cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3512867-bb739c01988b6f06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3512867-66fa92f2555eabe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-25T12:21:01.761Z">
+<meta property="og:updated_time" content="2017-09-25T15:40:09.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Andrid 利用 9-Patch 图片制作聊天框">
-<meta name="twitter:description" content="什么是9-Patch图片?一种被特殊处理过的png图片，可以指定哪些区域能够拉伸，哪些区域不能拉伸，哪些区域可以显示内容。  使用场景主要是用于对话框等拉伸能够不变形的场景  创建.9.png图片选中一张png图片，右键Create 9-Patch file">
+<meta name="twitter:description" content="什么是9-Patch图片?一种被特殊处理过的 png 图片，可以指定哪些区域能够拉伸，哪些区域不能拉伸，哪些区域可以显示内容。  使用场景主要是用于对话框等拉伸能够不变形的场景  创建 .9.png 图片选中一张 png 图片，右键 Create 9-Patch file">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3512867-323ac8998352b4a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="dyx&#39;s blog" type="application/atom+xml">
@@ -177,24 +177,24 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li><p>什么是9-Patch图片?<br><strong>一种被特殊处理过的png图片，可以指定哪些区域能够拉伸，哪些区域不能拉伸，哪些区域可以显示内容。</strong></p>
+<li><p>什么是9-Patch图片?<br><strong>一种被特殊处理过的 png 图片，可以指定哪些区域能够拉伸，哪些区域不能拉伸，哪些区域可以显示内容。</strong></p>
 </li>
 <li><p>使用场景<br>主要是用于对话框等拉伸能够不变形的场景</p>
 </li>
-<li><p>创建.9.png图片<br>选中一张png图片，右键Create 9-Patch file</p>
+<li><p>创建 .9.png 图片<br>选中一张 png 图片，右键 Create 9-Patch file </p>
 <a id="more"></a>
 <p><img src="http://upload-images.jianshu.io/upload_images/3512867-323ac8998352b4a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <blockquote>
-<p>注意：9-Patch图片要放在drawable文件夹下，否则编译时会报错。后缀名必须是.9.png。</p>
+<p>注意：9-Patch 图片要放在 drawable 文件夹下，否则编译时会报错。后缀名必须是 .9.png 。</p>
 </blockquote>
 </li>
-<li><p>编辑.9.png图片<br>打开.9.png图片，选择9-Patch即可对图片进行编辑。<br><strong> 编辑图片时上下左右四个方向的黑线，用来控制图片可拉伸和可显示区域。上和左控制图片可拉伸区域，下和右控制图片可显示区域。</strong><br><img src="http://upload-images.jianshu.io/upload_images/3512867-0c82d5bf86c8f724.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<li><p>编辑 .9.png 图片<br>打开 .9.png 图片，选择 9-Patch 即可对图片进行编辑。<br><strong> 编辑图片时上下左右四个方向的黑线，用来控制图片可拉伸和可显示区域。上和左控制图片可拉伸区域，下和右控制图片可显示区域。</strong><br><img src="http://upload-images.jianshu.io/upload_images/3512867-0c82d5bf86c8f724.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 </li>
-<li><p>使用9.png图片<br>在布局文件中，将TextView的背景设置为制作好的9-Patch图片。</p>
+<li><p>使用 9.pn g图片<br>在布局文件中，将 TextView 的背景设置为制作好的 9-Patch 图片。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;TextView</div><div class="line">    android:background=&quot;@drawable/chat&quot;</div><div class="line">    android:layout_width=&quot;wrap_content&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:textSize=&quot;20sp&quot;</div><div class="line">    android:paddingTop=&quot;12dp&quot;</div><div class="line">    android:text=&quot;@string/chat_content&quot;/&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>当TextView中内容变化时，显示效果如下:<br><img src="http://upload-images.jianshu.io/upload_images/3512867-f908bd1a9e7143cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/3512867-bb739c01988b6f06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/3512867-66fa92f2555eabe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>当 TextView 中内容变化时，显示效果如下:<br><img src="http://upload-images.jianshu.io/upload_images/3512867-f908bd1a9e7143cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/3512867-bb739c01988b6f06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/3512867-66fa92f2555eabe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 
       
 
@@ -278,20 +278,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/11/03/Android-Immersive-Full-Screen-Mode/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/11/02/Andrid-Multilingual-adaptation/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Android 沉浸式模式与常见状态栏和导航栏
+          Andrid 多语言适配
         
       </div>
     </a>
   
-  
-    <a href="/2016/11/02/Andrid-Multilingual-adaptation/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Andrid 多语言适配</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
