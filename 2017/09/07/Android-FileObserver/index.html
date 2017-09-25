@@ -15,7 +15,7 @@
 <meta property="og:url" content="dingyx.tech/2017/09/07/Android-FileObserver/index.html">
 <meta property="og:site_name" content="dyx&#39;s blog">
 <meta property="og:description" content="FileObserver 是一个用来监听文件变化的抽象类，子类必须实现事件处理的方法 onEvent(int, String)  。由于最近做了两个项目都用上就查阅了官方文档，写下这篇文章记录一下。  每一个 FileObserver 实例用来监听一个文件或者文件夹，当文件夹被监听时，任意子文件或文件夹的访问或修改都会触发事件。注意：FileObserver 不能监听到二级子文件夹或文件的变化。">
-<meta property="og:updated_time" content="2017-09-24T16:26:42.926Z">
+<meta property="og:updated_time" content="2017-09-25T12:21:36.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Andrid FileObserver 监听文件变化">
 <meta name="twitter:description" content="FileObserver 是一个用来监听文件变化的抽象类，子类必须实现事件处理的方法 onEvent(int, String)  。由于最近做了两个项目都用上就查阅了官方文档，写下这篇文章记录一下。  每一个 FileObserver 实例用来监听一个文件或者文件夹，当文件夹被监听时，任意子文件或文件夹的访问或修改都会触发事件。注意：FileObserver 不能监听到二级子文件夹或文件的变化。">
@@ -175,6 +175,7 @@
 <p>每一个 FileObserver 实例用来监听一个文件或者文件夹，当文件夹被监听时，任意子文件或文件夹的访问或修改都会触发事件。<strong>注意：</strong>FileObserver 不能监听到二级子文件夹或文件的变化。</p>
 </blockquote>
 <p>先附上官方的 FileObserver 链接：<a href="https://developer.android.google.cn/reference/android/os/FileObserver.html" target="_blank" rel="external">https://developer.android.google.cn/reference/android/os/FileObserver.html</a></p>
+<a id="more"></a>
 <ul>
 <li>所有常量 (可监听的事件)</li>
 </ul>
@@ -287,7 +288,7 @@
 </li>
 </ul>
 <blockquote>
-<p>上述代码只是一个简单用法的介绍，在我工作的项目中用到的情况是<br>智能家居设备是 Android 系统，在底层实现了一套唤醒机制，当设备唤醒时底层会将唤醒状态，唤醒角度等值写入一个文件。应用层使用 FileObserver 来监听这个文件，当文件变化时认为设备被唤醒，就去读取该文件获取唤醒相关的<br>数值。</p>
+<p>上述代码只是一个简单用法的介绍，在我工作的项目中用到的情况是<br>智能家居设备是 Android 系统，在底层实现了一套唤醒机制，当设备唤醒时底层会将唤醒状态，唤醒角度等值写入一个文件。应用层使用 FileObserver 来监听这个文件，当文件变化时认为设备被唤醒，就去读取该文件获取唤醒相关的数值。</p>
 </blockquote>
 
       
