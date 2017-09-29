@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="dingyx.tech">
   <title>Android ADB 命令记录 | dyx&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录平时用到的 adb 命令  重启机器 1adb reboot  安装 apk 12adb install &amp;lt;ApkFilePath&amp;gt;// eg. adb install F:\app\test.apk  卸载 apk 1adb uninstall &amp;lt;packagename&amp;gt;">
+  <meta name="description" content="记录平时用到的 adb 命令  重启机器 1adb reboot  安装 apk 12adb install &amp;lt;ApkFilePath&amp;gt;// eg. adb install F:\app\test.apk">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android ADB 命令记录">
 <meta property="og:url" content="dingyx.tech/2017/09/29/Android-ADB-Commond/index.html">
 <meta property="og:site_name" content="dyx&#39;s blog">
-<meta property="og:description" content="记录平时用到的 adb 命令  重启机器 1adb reboot  安装 apk 12adb install &amp;lt;ApkFilePath&amp;gt;// eg. adb install F:\app\test.apk  卸载 apk 1adb uninstall &amp;lt;packagename&amp;gt;">
-<meta property="og:updated_time" content="2017-09-29T14:38:54.511Z">
+<meta property="og:description" content="记录平时用到的 adb 命令  重启机器 1adb reboot  安装 apk 12adb install &amp;lt;ApkFilePath&amp;gt;// eg. adb install F:\app\test.apk">
+<meta property="og:updated_time" content="2017-09-29T16:34:30.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android ADB 命令记录">
-<meta name="twitter:description" content="记录平时用到的 adb 命令  重启机器 1adb reboot  安装 apk 12adb install &amp;lt;ApkFilePath&amp;gt;// eg. adb install F:\app\test.apk  卸载 apk 1adb uninstall &amp;lt;packagename&amp;gt;">
+<meta name="twitter:description" content="记录平时用到的 adb 命令  重启机器 1adb reboot  安装 apk 12adb install &amp;lt;ApkFilePath&amp;gt;// eg. adb install F:\app\test.apk">
   
     <link rel="alternative" href="/atom.xml" title="dyx&#39;s blog" type="application/atom+xml">
   
@@ -178,12 +178,12 @@
 <li><p>安装 apk</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb install &lt;ApkFilePath&gt;</div><div class="line">// eg. adb install F:\app\test.apk</div></pre></td></tr></table></figure>
 </li>
-<li><p>卸载 apk</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb uninstall &lt;packagename&gt;</div></pre></td></tr></table></figure>
-</li>
 </ol>
 <a id="more"></a>
 <ol>
+<li><p>卸载 apk</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb uninstall &lt;packagename&gt;</div></pre></td></tr></table></figure>
+</li>
 <li><p>启动 activity</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am start -n &lt;packagename/.activityname&gt;</div><div class="line">// eg. adb shell am start -n com.edong.speaker/.MainActivity</div></pre></td></tr></table></figure>
 </li>
