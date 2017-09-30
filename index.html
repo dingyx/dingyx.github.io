@@ -171,51 +171,35 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>记录平时用到的 adb 命令</p>
-<ol>
-<li><p>重启机器</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb reboot</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装 apk</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb install &lt;ApkFilePath&gt;</div><div class="line">// eg. adb install F:\app\test.apk</div></pre></td></tr></table></figure>
-</li>
-<li><p>卸载 apk</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb uninstall &lt;packagename&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>启动 activity</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am start -n &lt;packagename/.activityname&gt;</div><div class="line">// eg. adb shell am start -n com.edong.speaker/.MainActivity</div></pre></td></tr></table></figure>
-</li>
-<li><p>启动 service</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am startservice -n &lt;packagename/.servicename&gt;</div><div class="line">// eg. adb shell am startservice -n com.edong.speaker/.service.SpeakerService</div></pre></td></tr></table></figure>
-</li>
-<li><p>从 Android 设备拉取文件到电脑</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb pull &lt;AndroidFilePath&gt; &lt;PcDirPath&gt;</div><div class="line">// eg. adb pull /sdcard/configmanager.json F:\app</div></pre></td></tr></table></figure>
-</li>
-<li><p>从电脑 copy 文件到 Android 设备</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb push &lt;PcFilePath&gt; &lt;AndroidDirPath&gt;</div><div class="line">// eg. adb push F:\app\configmanager.json /sdcard/</div></pre></td></tr></table></figure>
-</li>
-<li><p>输出 Android 设备日志到电脑</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb logcat &gt; &lt;PcFilePath&gt;</div><div class="line">// eg. adb logcat &gt; D:/log.txt</div></pre></td></tr></table></figure>
-</li>
-<li><p>列出所有已安装 apk 包</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pm list packages</div></pre></td></tr></table></figure>
-</li>
-<li><p>根据包名查找已安装的 apk 路径</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pm path &lt;packagename&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>进入 Shell 模式  (通常用来查看文件夹)</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell</div></pre></td></tr></table></figure>
-</li>
-<li><p>删除设备上某个文件</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell rm -rf &lt;AndroidFilePath&gt;</div><div class="line">//进入 adb shell 删除文件可以直接 rm -rf &lt;AndroidFilePath&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>adb 获取 root权限 (机器须已 root )</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb root</div></pre></td></tr></table></figure>
-</li>
-<li><p>重新挂载分区 (通常在执行 adb root 后，让原本不可读写文件变得可读写前执行此命令)</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb remount</div></pre></td></tr></table></figure>
-</li>
-</ol>
-
+<p>1.重启机器</p>
+   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb reboot</div></pre></td></tr></table></figure>
+<p>2.安装 apk</p>
+   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb install &lt;ApkFilePath&gt;</div><div class="line">// eg. adb install F:\app\test.apk</div></pre></td></tr></table></figure>
+<p>3.卸载 apk</p>
+   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb uninstall &lt;packagename&gt;</div></pre></td></tr></table></figure>
+<p>4.启动 activity</p>
+   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am start -n &lt;packagename/.activityname&gt;</div><div class="line">// eg. adb shell am start -n com.edong.speaker/.MainActivity</div></pre></td></tr></table></figure>
+<p>5.启动 service</p>
+   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am startservice -n &lt;packagename/.servicename&gt;</div><div class="line">// eg. adb shell am startservice -n com.edong.speaker/.service.SpeakerService</div></pre></td></tr></table></figure>
+<p>6.从 Android 设备拉取文件到电脑</p>
+   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb pull &lt;AndroidFilePath&gt; &lt;PcDirPath&gt;</div><div class="line">// eg. adb pull /sdcard/configmanager.json F:\app</div></pre></td></tr></table></figure>
+<p>7.从电脑 copy 文件到 Android 设备</p>
+   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb push &lt;PcFilePath&gt; &lt;AndroidDirPath&gt;</div><div class="line">// eg. adb push F:\app\configmanager.json /sdcard/</div></pre></td></tr></table></figure>
+<p>8.输出 Android 设备日志到电脑</p>
+   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb logcat &gt; &lt;PcFilePath&gt;</div><div class="line">// eg. adb logcat &gt; D:/log.txt</div></pre></td></tr></table></figure>
+<p>9.列出所有已安装 apk 包</p>
+   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pm list packages</div></pre></td></tr></table></figure>
+<p>10.根据包名查找已安装的 apk 路径</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pm path &lt;packagename&gt;</div></pre></td></tr></table></figure>
+<p>11.进入 Shell 模式  (通常用来查看文件夹)</p>
+   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell</div></pre></td></tr></table></figure>
+<p>12.删除设备上某个文件</p>
+   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell rm -rf &lt;AndroidFilePath&gt;</div><div class="line">//进入 adb shell 删除文件可以直接 rm -rf &lt;AndroidFilePath&gt;</div></pre></td></tr></table></figure>
+<p>13.adb 获取 root权限 (机器须已 root )</p>
+   <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb root</div></pre></td></tr></table></figure>
+<p>14.重新挂载分区 (通常在执行 adb root 后，让原本不可读写文件变得可读写前执行此命令)</p>
+<pre><code><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb remount</div></pre></td></tr></table></figure>
+</code></pre>
       
 
       
