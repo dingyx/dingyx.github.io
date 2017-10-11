@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3512867-b0ea965857980068?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3512867-1db7c0bdebdca07f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3512867-dabb40c4532c85ec?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-25T15:39:19.409Z">
+<meta property="og:updated_time" content="2017-10-11T12:15:05.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Andrid 多语言适配">
 <meta name="twitter:description" content="应用程序根据系统设置语言实现多语言适配应用程序默认只要配置不同语言的文件，在启动应用时都会根据系统语言而加载对应的语言资源文件。例如支付宝，微信，微博等都实现了中英文的适配。下面的例子我们将实现中文的适配。  创建相应语言的文件右键 res 文件夹 File–&amp;gt;New–&amp;gt;Android resource file 选择 Locale 看到如下界面：我们选择新增的语言为中文，将文件名设为">
@@ -176,7 +176,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="应用程序根据系统设置语言实现多语言适配"><a href="#应用程序根据系统设置语言实现多语言适配" class="headerlink" title="应用程序根据系统设置语言实现多语言适配"></a>应用程序根据系统设置语言实现多语言适配</h2><p>应用程序默认只要配置不同语言的文件，在启动应用时都会根据系统语言而加载对应的语言资源文件。例如支付宝，微信，微博等都实现了中英文的适配。下面的例子我们将实现中文的适配。</p>
+        <h3 id="应用程序根据系统设置语言实现多语言适配"><a href="#应用程序根据系统设置语言实现多语言适配" class="headerlink" title="应用程序根据系统设置语言实现多语言适配"></a>应用程序根据系统设置语言实现多语言适配</h3><p>应用程序默认只要配置不同语言的文件，在启动应用时都会根据系统语言而加载对应的语言资源文件。例如支付宝，微信，微博等都实现了中英文的适配。下面的例子我们将实现中文的适配。</p>
 <ul>
 <li><p>创建相应语言的文件<br>右键 res 文件夹 File–&gt;New–&gt;Android resource file 选择 Locale 看到如下界面：<br>我们选择新增的语言为中文，将文件名设为 strings </p>
 <a id="more"></a>
@@ -196,7 +196,7 @@
 <blockquote>
 <p>注意：当应用程序没有退出，进入系统修改了语言设置。再次进入时应用会重新载入。类似于横竖屏切换时的应用生命周期。</p>
 </blockquote>
-<h2 id="应用内实现语言设置"><a href="#应用内实现语言设置" class="headerlink" title="应用内实现语言设置"></a>应用内实现语言设置</h2><ul>
+<h3 id="应用内实现语言设置"><a href="#应用内实现语言设置" class="headerlink" title="应用内实现语言设置"></a>应用内实现语言设置</h3><ul>
 <li>实现效果<br>应用内有一个设置按钮，点击设置时弹出 dialog 提示语言选择。用户选择完成后，重启应用并按用户设置加载对应的语言。</li>
 </ul>
 <p>点击设置按钮出现如下界面：<br><img src="http://upload-images.jianshu.io/upload_images/3512867-dabb40c4532c85ec?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
@@ -289,15 +289,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/11/02/Android-9-Patch-picture/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/11/03/Android-Immersive-Full-Screen-Mode/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Andrid 利用 9-Patch 图片制作聊天框
+          Android 沉浸式模式与常见状态栏和导航栏
         
       </div>
     </a>
   
+  
+    <a href="/2016/11/02/Android-9-Patch-picture/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Andrid 利用 9-Patch 图片制作聊天框</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 

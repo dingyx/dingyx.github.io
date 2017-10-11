@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3512867-94818973391eec0d.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3512867-777cc5d17ae4f3bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3512867-787824eceb48a743.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-25T15:41:49.314Z">
+<meta property="og:updated_time" content="2017-10-11T12:14:09.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 沉浸式模式与常见状态栏和导航栏">
 <meta name="twitter:description" content="Android沉浸式模式官方称沉浸式状态栏为沉浸式模式。  什么是沉浸式？沉浸式就是让人专注当前的(由设计者营造)情境下感到愉悦和满足，而忘记真实的情境。      什么是Android中的沉浸式？当启用该模式，应用程序的界面将占据整个屏幕，自动隐藏系统的状态栏和导航栏，让应用程序内容可以在最大显示范围呈现，增加大屏体验，而当需要查看通知的时候只需要从顶部向下滑动就能呼出通知栏。">
@@ -175,7 +175,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Android沉浸式模式"><a href="#Android沉浸式模式" class="headerlink" title="Android沉浸式模式"></a>Android沉浸式模式</h1><p>官方称沉浸式状态栏为沉浸式模式。</p>
+        <h3 id="Android沉浸式模式"><a href="#Android沉浸式模式" class="headerlink" title="Android沉浸式模式"></a>Android沉浸式模式</h3><p>官方称沉浸式状态栏为沉浸式模式。</p>
 <ul>
 <li><p>什么是沉浸式？<br><strong>沉浸式就是让人专注当前的(由设计者营造)情境下感到愉悦和满足，而忘记真实的情境。</strong>    </p>
 </li>
@@ -198,7 +198,7 @@
 <p>注意：onWindowFocusChanged 方法里面的代码不能直接写在 onCrate 方法中，如果这么写当应用处于后台 Stoped 状态，下次启动应用便执行不到处理沉浸式的代码。Activity 生命周期中，真正的 visible 时间点是 onWindowFocusChanged() 函数被执行时，所以我们将这段代码写在这个方法中。</p>
 </blockquote>
 <p>可以参考官方文档：<a href="https://developer.android.google.cn/training/system-ui/immersive.html" target="_blank" rel="external">https://developer.android.google.cn</a><br>中文翻译版：<a href="http://hukai.me/android-training-course-in-chinese/ui/system-ui/immersive.html" target="_blank" rel="external">http://hukai.me/android-training-course-in-chinese</a></p>
-<h1 id="其他常见状态栏和导航栏效果"><a href="#其他常见状态栏和导航栏效果" class="headerlink" title="其他常见状态栏和导航栏效果"></a>其他常见状态栏和导航栏效果</h1><ul>
+<h3 id="其他常见状态栏和导航栏效果"><a href="#其他常见状态栏和导航栏效果" class="headerlink" title="其他常见状态栏和导航栏效果"></a>其他常见状态栏和导航栏效果</h3><ul>
 <li>隐藏 ActionBar <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ActionBar actionBar = getSupportActionBar();</div><div class="line">actionBar.hide();</div></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -304,8 +304,8 @@
     </a>
   
   
-    <a href="/2016/11/02/Android-9-Patch-picture/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Andrid 利用 9-Patch 图片制作聊天框</div>
+    <a href="/2016/11/02/Andrid-Multilingual-adaptation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Andrid 多语言适配</div>
       <i class="icon-circle-right"></i>
     </a>
   
