@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="dingyx.tech">
   <title>Android ADB 命令记录 | dyx&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录平时用到的 adb 命令  重启机器 1adb reboot  安装 apk 12adb install &amp;lt;ApkFilePath&amp;gt;// eg. adb install F:\app\test.apk  卸载 apk 1adb uninstall &amp;lt;packagename&amp;gt;">
+  <meta name="description" content="记录平时用到的 adb 命令  重启机器 1adb reboot  安装 apk 12adb install &amp;lt;ApkFilePath&amp;gt;// eg. adb install F:\app\test.apk">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android ADB 命令记录">
 <meta property="og:url" content="dingyx.tech/2017/09/29/Android-ADB-Commond/index.html">
 <meta property="og:site_name" content="dyx&#39;s blog">
-<meta property="og:description" content="记录平时用到的 adb 命令  重启机器 1adb reboot  安装 apk 12adb install &amp;lt;ApkFilePath&amp;gt;// eg. adb install F:\app\test.apk  卸载 apk 1adb uninstall &amp;lt;packagename&amp;gt;">
-<meta property="og:updated_time" content="2017-10-08T03:04:31.741Z">
+<meta property="og:description" content="记录平时用到的 adb 命令  重启机器 1adb reboot  安装 apk 12adb install &amp;lt;ApkFilePath&amp;gt;// eg. adb install F:\app\test.apk">
+<meta property="og:updated_time" content="2017-10-11T12:10:27.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android ADB 命令记录">
-<meta name="twitter:description" content="记录平时用到的 adb 命令  重启机器 1adb reboot  安装 apk 12adb install &amp;lt;ApkFilePath&amp;gt;// eg. adb install F:\app\test.apk  卸载 apk 1adb uninstall &amp;lt;packagename&amp;gt;">
+<meta name="twitter:description" content="记录平时用到的 adb 命令  重启机器 1adb reboot  安装 apk 12adb install &amp;lt;ApkFilePath&amp;gt;// eg. adb install F:\app\test.apk">
   
     <link rel="alternative" href="/atom.xml" title="dyx&#39;s blog" type="application/atom+xml">
   
@@ -170,20 +170,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>记录平时用到的 adb 命令</p>
-<ol>
+        <p><strong>记录平时用到的 adb 命令</strong></p>
+<ul>
 <li><p>重启机器</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb reboot</div></pre></td></tr></table></figure>
 </li>
 <li><p>安装 apk</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb install &lt;ApkFilePath&gt;</div><div class="line">// eg. adb install F:\app\test.apk</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>卸载 apk</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb uninstall &lt;packagename&gt;</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<a id="more"></a>
-<ol>
 <li><p>启动 activity</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am start -n &lt;packagename/.activityname&gt;</div><div class="line">// eg. adb shell am start -n com.edong.speaker/.MainActivity</div></pre></td></tr></table></figure>
 </li>
@@ -196,29 +196,27 @@
 <li><p>从电脑 copy 文件到 Android 设备</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb push &lt;PcFilePath&gt; &lt;AndroidDirPath&gt;</div><div class="line">// eg. adb push F:\app\configmanager.json /sdcard/</div></pre></td></tr></table></figure>
 </li>
-<li><p>输出 Android 设备日志到电脑</p>
+<li><p>输出 Android 设备 logcat  日志到电脑</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb logcat &gt; &lt;PcFilePath&gt;</div><div class="line">// eg. adb logcat &gt; D:/log.txt</div></pre></td></tr></table></figure>
+</li>
+<li><p>进入 Shell 模式  (进入 Shell 后即可使用很多 Linux 下的 Shell 命令)</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除设备上某个文件</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell rm -rf &lt;AndroidFilePath&gt;</div><div class="line">//进入 Shell 删除文件可以直接 rm -rf &lt;AndroidFilePath&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>列出所有已安装 apk 包</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pm list packages</div></pre></td></tr></table></figure>
+</li>
+<li><p>根据包名查找已安装的 apk 路径</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pm path &lt;packagename&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>adb 获取 root权限 (机器须已 root )</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb root</div></pre></td></tr></table></figure>
 </li>
 <li><p>重新挂载分区 (通常在执行 adb root 后，让原本不可读写文件变得可读写前执行此命令)</p>
-</li>
-</ol>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb remount</div></pre></td></tr></table></figure>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">11. 列出所有已安装 apk 包</div><div class="line"></div><div class="line">```markdown</div><div class="line">adb shell pm list packages</div></pre></td></tr></table></figure>
-<ol>
-<li>根据包名查找已安装的 apk 路径</li>
-</ol>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pm path &lt;packagename&gt;</div></pre></td></tr></table></figure>
-<ol>
-<li>进入 Shell 模式  (进入 Shell 后即可使用很多 Linux 下的 Shell 命令)</li>
-</ol>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell</div></pre></td></tr></table></figure>
-<ol>
-<li>删除设备上某个文件</li>
-</ol>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell rm -rf &lt;AndroidFilePath&gt;</div><div class="line">//进入 adb shell 删除文件可以直接 rm -rf &lt;AndroidFilePath&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb remount</div></pre></td></tr></table></figure></li>
+</ul>
 
       
 
