@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="dingyx.tech">
-  <title>Archives | dyx&#39;s blog</title>
+  <title>Andrid 多语言适配 | dyx&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Android Developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="dyx&#39;s blog">
-<meta property="og:url" content="dingyx.tech/archives/index.html">
+  <meta name="description" content="制作一个简单 Android Launcher app首先看一下这个简易 launcher 的效果如下:   按下 home 键会提示进入我们的 launcher app，launcher 中有一个 GridView 显示所有的应用程序，点击可以进入相应的 app。(如果没有设置默认或者有多个 launcher 按下home键会提示选择进入哪个 launcher)  实现步骤 配置 manifes">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Andrid 多语言适配">
+<meta property="og:url" content="dingyx.tech/2016/10/25/Android-Simple-Launcher/index.html">
 <meta property="og:site_name" content="dyx&#39;s blog">
-<meta property="og:description" content="Android Developer">
+<meta property="og:description" content="制作一个简单 Android Launcher app首先看一下这个简易 launcher 的效果如下:   按下 home 键会提示进入我们的 launcher app，launcher 中有一个 GridView 显示所有的应用程序，点击可以进入相应的 app。(如果没有设置默认或者有多个 launcher 按下home键会提示选择进入哪个 launcher)  实现步骤 配置 manifes">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3512867-7552825da0d7b09c.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2017-10-20T11:50:01.814Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dyx&#39;s blog">
-<meta name="twitter:description" content="Android Developer">
+<meta name="twitter:title" content="Andrid 多语言适配">
+<meta name="twitter:description" content="制作一个简单 Android Launcher app首先看一下这个简易 launcher 的效果如下:   按下 home 键会提示进入我们的 launcher app，launcher 中有一个 GridView 显示所有的应用程序，点击可以进入相应的 app。(如果没有设置默认或者有多个 launcher 按下home键会提示选择进入哪个 launcher)  实现步骤 配置 manifes">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3512867-7552825da0d7b09c.gif?imageMogr2/auto-orient/strip">
   
     <link rel="alternative" href="/atom.xml" title="dyx&#39;s blog" type="application/atom+xml">
   
@@ -148,36 +152,74 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Android-Simple-Launcher" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Andrid 多语言适配
+    </h1>
+  
+
+        
+        <a href="/2016/10/25/Android-Simple-Launcher/" class="archive-article-date">
+  	<time datetime="2016-10-25T12:06:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-25</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="制作一个简单-Android-Launcher-app"><a href="#制作一个简单-Android-Launcher-app" class="headerlink" title="制作一个简单 Android Launcher app"></a>制作一个简单 Android Launcher app</h3><p>首先看一下这个简易 launcher 的效果如下:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3512867-7552825da0d7b09c.gif?imageMogr2/auto-orient/strip" alt="launcher.gif"></p>
+<blockquote>
+<p>按下 home 键会提示进入我们的 launcher app，launcher 中有一个 GridView 显示所有的应用程序，点击可以进入相应的 app。(如果没有设置默认或者有多个 launcher 按下home键会提示选择进入哪个 launcher)</p>
+</blockquote>
+<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ul>
+<li>配置 manifest 如下 :<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">application</span></span></div><div class="line"><span class="tag">    <span class="attr">android:allowBackup</span>=<span class="string">"true"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:roundIcon</span>=<span class="string">"@mipmap/ic_launcher_round"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:supportsRtl</span>=<span class="string">"true"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.HOME"</span>/&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">application</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>action android:name=”android.intent.action.MAIN” </p>
+<p>表示所在的 Activity 为应用程序入口，启动 application 就启动这个 Activity</p>
+<p>category android:name=”android.intent.category.LAUNCHER” </p>
+<p>表示 app会出现在 launcher 中 </p>
+<p>category android:name=”android.intent.category.HOME”    </p>
+<p>设置 app 可按下 home 键进入 ( launcher 形式 )</p>
+<p>category android:name=”android.intent.category.DEFAULT” </p>
+<p>设置 app 可以通过隐式意图打开</p>
+</blockquote>
+<ul>
+<li><p>修改 activity_main 布局，使用一个 GridView 填充</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;GridView</div><div class="line">     android:id=&quot;@+id/gv_item&quot;</div><div class="line">     android:layout_width=&quot;match_parent&quot;</div><div class="line">     android:layout_height=&quot;match_parent&quot;</div><div class="line">     android:numColumns=&quot;auto_fit&quot;</div><div class="line">     android:columnWidth=&quot;96dp&quot;</div><div class="line">     android:verticalSpacing=&quot;12dp&quot;</div><div class="line">     android:horizontalSpacing=&quot;12dp&quot;</div><div class="line">     android:stretchMode=&quot;columnWidth&quot;</div><div class="line">     android:gravity=&quot;center&quot;&gt;</div><div class="line">&lt;/GridView&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用 GridView 实现 ImageView+TextView  (上面显示app图标 / 下面显示app名字)  </p>
+<ul>
+<li><p>在 layout 中写一个 grid_item.xml ，显示 ImageView+TextView </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/iv_icon"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"90dp"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"90dp"</span> /&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/tv_title"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:singleLine</span>=<span class="string">"true"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"90dp"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>写一个 javabean 来存放要显示的数据 GridInfo.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GridInfo</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Drawable appIcon;		<span class="comment">// 图标</span></div><div class="line">    <span class="keyword">private</span> String title;			<span class="comment">// app 名字</span></div><div class="line">    <span class="keyword">private</span> String packageName; 	<span class="comment">// app 包名 (用来实现根据包名打开app)</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GridInfo</span><span class="params">(Drawable appIcon,String title,String packageName)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.appIcon = appIcon;</div><div class="line">        <span class="keyword">this</span>.title = title;</div><div class="line">        <span class="keyword">this</span>.packageName = packageName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Drawable <span class="title">getAppIcon</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> appIcon;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> title;</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getPackageName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> packageName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>自定义 GridItemAdapter 继承 BaseAdapter</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GridItemAdapter</span> <span class="keyword">extends</span> <span class="title">BaseAdapter</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;GridInfo&gt; mGridInfoList;    <span class="comment">//定义数据类</span></div><div class="line">    <span class="keyword">private</span> LayoutInflater mInflater;       <span class="comment">//定义Inflater</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GridItemAdapter</span><span class="params">(Context context, List&lt;GridInfo&gt; gridInfoList)</span></span>&#123;</div><div class="line">        mGridInfoList = gridInfoList;</div><div class="line">        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mGridInfoList.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mGridInfoList.get(position);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getItemId</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> position;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</div><div class="line">        ViewHolder viewHolder = <span class="keyword">new</span> ViewHolder();</div><div class="line">        <span class="keyword">if</span>(convertView==<span class="keyword">null</span>)&#123;</div><div class="line">            convertView = mInflater.inflate(R.layout.grid_item,<span class="keyword">null</span>);</div><div class="line">            viewHolder.iv = (ImageView) convertView.findViewById(R.id.iv_icon);</div><div class="line">            viewHolder.tv = (TextView) convertView.findViewById(R.id.tv_title);</div><div class="line">            convertView.setTag(viewHolder);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            viewHolder = (ViewHolder) convertView.getTag();</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//设置holder</span></div><div class="line">        GridInfo mGridInfo =  mGridInfoList.get(position);</div><div class="line">        viewHolder.iv.setImageDrawable(mGridInfo.getAppIcon());</div><div class="line">        viewHolder.tv.setText(mGridInfo.getTitle());</div><div class="line">        <span class="keyword">return</span> convertView;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span></span>&#123;</div><div class="line">        ImageView iv;</div><div class="line">        TextView tv;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>​</p>
+</li>
+<li><p>MainActivity.java 实现点击图标进入相应程序</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    GridView mGridView;</div><div class="line">    <span class="comment">//应用的图标，名称，包名</span></div><div class="line">    GridInfo mGridInfo;</div><div class="line">    List&lt;GridInfo&gt; mGridInfoList;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">		<span class="comment">//隐藏ActionBar</span></div><div class="line">        ActionBar actionBar = getSupportActionBar();</div><div class="line">        actionBar.hide();</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">		<span class="comment">// 初始化数据</span></div><div class="line">        init();</div><div class="line">        <span class="comment">// 初始化View</span></div><div class="line">        initView();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// 获取所有可显示的应用信息</span></div><div class="line">        Intent mainInent = <span class="keyword">new</span> Intent(Intent.ACTION_MAIN,<span class="keyword">null</span>);</div><div class="line">        mainInent.addCategory(Intent.CATEGORY_LAUNCHER);</div><div class="line">        List&lt;ResolveInfo&gt; resolveInfos = getPackageManager().queryIntentActivities(mainInent, <span class="number">0</span>);</div><div class="line">      	<span class="comment">// 新建集合保存显示时需要的 app 信息</span></div><div class="line">        mGridInfoList = <span class="keyword">new</span> ArrayList();</div><div class="line">      	<span class="comment">// 遍历 resolveInfos 获取 app 名字,图标,包名 保存在 mGridInfoList</span></div><div class="line">        <span class="keyword">for</span>(ResolveInfo resolveInfo:resolveInfos)&#123;</div><div class="line">            Drawable icon = resolveInfo.activityInfo.loadIcon(getPackageManager());</div><div class="line">            String title = resolveInfo.activityInfo.loadLabel(getPackageManager()).toString();</div><div class="line">            String packageName = resolveInfo.activityInfo.packageName;</div><div class="line"></div><div class="line">            mGridInfo = <span class="keyword">new</span> GridInfo(icon, title, packageName);</div><div class="line">            mGridInfoList.add(mGridInfo);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span> </span>&#123;</div><div class="line">        mGridView = (GridView) findViewById(R.id.gv_item);</div><div class="line">        GridItemAdapter mAdapter = <span class="keyword">new</span> GridItemAdapter(<span class="keyword">this</span>,mGridInfoList);</div><div class="line">        mGridView.setAdapter(mAdapter);</div><div class="line">		</div><div class="line">		<span class="comment">//点击图标打开应用</span></div><div class="line">        mGridView.setOnItemClickListener(<span class="keyword">new</span> AdapterView.OnItemClickListener() &#123;</div><div class="line"></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(AdapterView&lt;?&gt; parent, View view, <span class="keyword">int</span> position, <span class="keyword">long</span> id)</span> </span>&#123;</div><div class="line"></div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    String packageName = mGridInfoList.get(position).getPackageName();</div><div class="line">                    Intent intent = MainActivity.<span class="keyword">this</span>.getPackageManager().getLaunchIntentForPackage(packageName);</div><div class="line">                    startActivity(intent);</div><div class="line">                &#125;<span class="keyword">catch</span> (Exception e)&#123;</div><div class="line">                    Toast.makeText(MainActivity.<span class="keyword">this</span>,<span class="string">"该应用无法直接打开"</span>,Toast.LENGTH_SHORT).show();</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/29/Android-ADB-Commond/" class="archive-article-date">
-  	<time datetime="2017-09-29T14:31:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/29/Android-ADB-Commond/">Android ADB 命令记录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,222 +231,109 @@
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/07/Android-FileObserver/" class="archive-article-date">
-  	<time datetime="2017-09-07T11:30:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/07/Android-FileObserver/">Andrid FileObserver 监听文件变化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/16/Android-6-0-System-Permissions/" class="archive-article-date">
-  	<time datetime="2017-01-16T14:53:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/16/Android-6-0-System-Permissions/">Android 6.0 运行时权限说明与封装</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/03/Android-Immersive-Full-Screen-Mode/" class="archive-article-date">
-  	<time datetime="2016-11-03T03:56:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/03/Android-Immersive-Full-Screen-Mode/">Android 沉浸式模式与常见状态栏和导航栏</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:dingyx.tech/2016/10/25/Android-Simple-Launcher/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/02/Andrid-Multilingual-adaptation/" class="archive-article-date">
-  	<time datetime="2016-11-02T15:51:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-02</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2016/11/02/Android-9-Patch-picture/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Andrid 利用 9-Patch 图片制作聊天框
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/02/Andrid-Multilingual-adaptation/">Andrid 多语言适配</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/02/Android-9-Patch-picture/" class="archive-article-date">
-  	<time datetime="2016-11-02T15:51:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/02/Android-9-Patch-picture/">Andrid 利用 9-Patch 图片制作聊天框</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -428,8 +357,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
