@@ -178,44 +178,44 @@
 <ul>
 <li>安装 apk</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">adb install <span class="xml"><span class="tag">&lt;<span class="name">ApkFilePath</span>&gt;</span></span></div><div class="line">// eg. adb install F:\app\test.apk</div><div class="line">// 可选参数 -r 允许覆盖安装  eg. adb install -r F:\app\test.apk</div><div class="line">// -t 允许安装测试包        -s 安装到sd卡   </div><div class="line">// -d 允许安装低版本包装包  -g 授权所有运行时权限</div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">adb install &lt;ApkFilePath&gt;</div><div class="line">// eg. adb install F:\app\test.apk</div><div class="line">// 可选参数 -r 允许覆盖安装  eg. adb install -r F:\app\test.apk</div><div class="line">// -t 允许安装测试包        -s 安装到sd卡   </div><div class="line">// -d 允许安装低版本包装包  -g 授权所有运行时权限</div></pre></td></tr></table></figure>
 <ul>
 <li>卸载 apk</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb uninstall <span class="xml"><span class="tag">&lt;<span class="name">packagename</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb uninstall &lt;packagename&gt;</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <ul>
 <li>启动 activity</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am start -n <span class="xml"><span class="tag">&lt;<span class="name">packagename</span>/<span class="attr">.activityname</span>&gt;</span></span></div><div class="line">// eg. adb shell am start -n com.edong.speaker/.MainActivity</div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am start -n &lt;packagename/.activityname&gt;</div><div class="line">// eg. adb shell am start -n com.edong.speaker/.MainActivity</div></pre></td></tr></table></figure>
 <ul>
 <li>启动 service</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am startservice -n <span class="xml"><span class="tag">&lt;<span class="name">packagename</span>/<span class="attr">.servicename</span>&gt;</span></span></div><div class="line">// eg. adb shell am startservice -n com.edong.speaker/.service.SpeakerService</div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am startservice -n &lt;packagename/.servicename&gt;</div><div class="line">// eg. adb shell am startservice -n com.edong.speaker/.service.SpeakerService</div></pre></td></tr></table></figure>
 <ul>
 <li>强制停止应用</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am force-stop <span class="xml"><span class="tag">&lt;<span class="name">packagename</span>&gt;</span></span></div><div class="line">//eg. adb shell am force-stop com.edong.test</div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am force-stop &lt;packagename&gt;</div><div class="line">//eg. adb shell am force-stop com.edong.test</div></pre></td></tr></table></figure>
 <ul>
 <li>发送广播</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb shell am broadcast [options] <span class="xml"><span class="tag">&lt;<span class="name">INTENT</span>&gt;</span></span></div><div class="line">// 向所有组件发广播 adb shell am broadcast -a android.intent.action.BOOT_COMPLETED</div><div class="line">// 只向某个广播 BroadcastReceiver 发广播 adb shell am broadcast -a android.intent.action.BOOT_COMPLETED -n com.edong.test/.BootCompletedReceiver</div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb shell am broadcast [options] &lt;INTENT&gt;</div><div class="line">// 向所有组件发广播 adb shell am broadcast -a android.intent.action.BOOT_COMPLETED</div><div class="line">// 只向某个广播 BroadcastReceiver 发广播 adb shell am broadcast -a android.intent.action.BOOT_COMPLETED -n com.edong.test/.BootCompletedReceiver</div></pre></td></tr></table></figure>
 <ul>
 <li>模拟按键输入</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell input keyevent <span class="xml"><span class="tag">&lt;<span class="name">keycode</span>&gt;</span></span> </div><div class="line">// HOME键 eg. adb shell input keyevent 3</div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell input keyevent &lt;keycode&gt; </div><div class="line">// HOME键 eg. adb shell input keyevent 3</div></pre></td></tr></table></figure>
 <ul>
 <li>从 Android 设备拉取文件到电脑</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb pull <span class="xml"><span class="tag">&lt;<span class="name">AndroidFilePath</span>&gt;</span></span> <span class="xml"><span class="tag">&lt;<span class="name">PcDirPath</span>&gt;</span></span></div><div class="line">// eg. adb pull /sdcard/configmanager.json F:\app</div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb pull &lt;AndroidFilePath&gt; &lt;PcDirPath&gt;</div><div class="line">// eg. adb pull /sdcard/configmanager.json F:\app</div></pre></td></tr></table></figure>
 <ul>
 <li>从电脑 copy 文件到 Android 设备</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb push <span class="xml"><span class="tag">&lt;<span class="name">PcFilePath</span>&gt;</span></span> <span class="xml"><span class="tag">&lt;<span class="name">AndroidDirPath</span>&gt;</span></span></div><div class="line">// eg. adb push F:\app\configmanager.json /sdcard/</div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb push &lt;PcFilePath&gt; &lt;AndroidDirPath&gt;</div><div class="line">// eg. adb push F:\app\configmanager.json /sdcard/</div></pre></td></tr></table></figure>
 <ul>
 <li>输出 Android 设备 logcat  日志到电脑</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb logcat &gt; <span class="xml"><span class="tag">&lt;<span class="name">PcFilePath</span>&gt;</span></span></div><div class="line">// eg. adb logcat &gt; D:/log.txt</div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb logcat &gt; &lt;PcFilePath&gt;</div><div class="line">// eg. adb logcat &gt; D:/log.txt</div></pre></td></tr></table></figure>
 <ul>
 <li>进入 Shell 模式  (进入 Shell 后即可使用很多 Linux 下的 Shell 命令)</li>
 </ul>
@@ -223,7 +223,7 @@
 <ul>
 <li>删除设备上某个文件</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell rm -rf <span class="xml"><span class="tag">&lt;<span class="name">AndroidFilePath</span>&gt;</span></span></div><div class="line">//进入 Shell 删除文件可以直接 rm -rf <span class="xml"><span class="tag">&lt;<span class="name">AndroidFilePath</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell rm -rf &lt;AndroidFilePath&gt;</div><div class="line">//进入 Shell 删除文件可以直接 rm -rf &lt;AndroidFilePath&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li>列出所有已安装 apk 包</li>
 </ul>
@@ -235,7 +235,7 @@
 <ul>
 <li>查看正在运行的 Services</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb shell dumpsys activity services [<span class="xml"><span class="tag">&lt;<span class="name">packagename</span>&gt;</span></span>]</div><div class="line">// 指定 packagename 则列出对应包名的 Services</div><div class="line">// 不指定 则列出所有 Services</div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb shell dumpsys activity services [&lt;packagename&gt;]</div><div class="line">// 指定 packagename 则列出对应包名的 Services</div><div class="line">// 不指定 则列出所有 Services</div></pre></td></tr></table></figure>
 <ul>
 <li>查看 WIFI 密码 (需要root权限)</li>
 </ul>
@@ -247,15 +247,15 @@
 <ul>
 <li>根据进程名字查看进程 pid</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pidof <span class="xml"><span class="tag">&lt;<span class="name">ProcessName</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pidof &lt;ProcessName&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li>杀掉某个进程</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell killall <span class="xml"><span class="tag">&lt;<span class="name">ProcessName</span>&gt;</span></span></div><div class="line">adb shell kill <span class="xml"><span class="tag">&lt;<span class="name">ProcessPid</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell killall &lt;ProcessName&gt;</div><div class="line">adb shell kill &lt;ProcessPid&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li>根据包名查找已安装的 apk 路径</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pm path <span class="xml"><span class="tag">&lt;<span class="name">packagename</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell pm path &lt;packagename&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li>查看 Mac 地址</li>
 </ul>
