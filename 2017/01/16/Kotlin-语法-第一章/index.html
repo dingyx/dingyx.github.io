@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="dingyx.tech">
-  <title>Archives: 2016/10 | dyx&#39;s blog</title>
+  <title>Kotlin 语法 第一章 | dyx&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Android Developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="dyx&#39;s blog">
-<meta property="og:url" content="dingyx.tech/archives/2016/10/index.html">
+  <meta name="description" content="基础语法 函数的定义  使用关键字 fun，参数格式 参数： 类型  123fun sum(a: Int, b: Int): Int &amp;#123;    return a + b&amp;#125;  表达式作为函数体，返回类型自动判断  123fun sum(a: Int, b: Int): Int = a + b// 省略后如下fun sum(a: Int, b: Int) = a + b  无返回值">
+<meta name="keywords" content="Kotlin 语法 函数 变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin 语法 第一章">
+<meta property="og:url" content="dingyx.tech/2017/01/16/Kotlin-语法-第一章/index.html">
 <meta property="og:site_name" content="dyx&#39;s blog">
-<meta property="og:description" content="Android Developer">
+<meta property="og:description" content="基础语法 函数的定义  使用关键字 fun，参数格式 参数： 类型  123fun sum(a: Int, b: Int): Int &amp;#123;    return a + b&amp;#125;  表达式作为函数体，返回类型自动判断  123fun sum(a: Int, b: Int): Int = a + b// 省略后如下fun sum(a: Int, b: Int) = a + b  无返回值">
+<meta property="og:updated_time" content="2018-11-05T12:33:16.676Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dyx&#39;s blog">
-<meta name="twitter:description" content="Android Developer">
+<meta name="twitter:title" content="Kotlin 语法 第一章">
+<meta name="twitter:description" content="基础语法 函数的定义  使用关键字 fun，参数格式 参数： 类型  123fun sum(a: Int, b: Int): Int &amp;#123;    return a + b&amp;#125;  表达式作为函数体，返回类型自动判断  123fun sum(a: Int, b: Int): Int = a + b// 省略后如下fun sum(a: Int, b: Int) = a + b  无返回值">
   
     <link rel="alternative" href="/atom.xml" title="dyx&#39;s blog" type="application/atom+xml">
   
@@ -148,60 +150,274 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Kotlin-语法-第一章" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/10/25/Android-Simple-Launcher/" class="archive-article-date">
-  	<time datetime="2016-10-25T12:06:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/25/Android-Simple-Launcher/">写个简单的 Launcher App</a>
+    <h1 class="article-title" itemprop="name">
+      Kotlin 语法 第一章
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/01/16/Kotlin-语法-第一章/" class="archive-article-date">
+  	<time datetime="2017-01-16T14:53:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h4><ul>
+<li><p>函数的定义</p>
+<blockquote>
+<p>使用关键字 fun，参数格式 参数： 类型</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sum</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> a + b</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>表达式作为函数体，返回类型自动判断</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sum</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> = a + b</div><div class="line"><span class="comment">// 省略后如下</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">sum</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span> = a + b</div></pre></td></tr></table></figure>
+<blockquote>
+<p>无返回值的函数 Unit返回类型可以省略</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">printLog</span><span class="params">(info : <span class="type">String</span>)</span></span>: <span class="built_in">Unit</span>&#123;</div><div class="line">    println(info)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 省略后如下</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">printLog</span><span class="params">(info : <span class="type">String</span>)</span></span>&#123;</div><div class="line">    println(info)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>可变长参数函数-使用关键字vararg</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">vars</span><span class="params">(<span class="keyword">vararg</span> v: <span class="type">Int</span>)</span></span> &#123;</div><div class="line">    <span class="keyword">for</span> (vt <span class="keyword">in</span> v)</div><div class="line">    	print(vt)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 如下调用输出 123456</span></div><div class="line">vars(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>lambda(匿名函数)</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> add: (<span class="built_in">Int</span>, <span class="built_in">Int</span>) -&gt; <span class="built_in">Int</span> = &#123; x, y -&gt; x + y &#125;</div><div class="line"><span class="comment">// 如下调用 返回结果3</span></div><div class="line">add(<span class="number">1</span>,<span class="number">2</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>定义常量与变量</p>
+<ul>
+<li><p>可变变量定义 var关键字</p>
+<blockquote>
+<p>var &lt;标识符&gt; ： &lt;类型&gt; = &lt;初始值&gt;</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str : String = <span class="string">"Java"</span></div><div class="line"><span class="comment">// 编译器支持自动类型判断 声明时可以不指定类型 由编译器判断。</span></div><div class="line"><span class="keyword">var</span> str = <span class="string">"Kotlin"</span></div><div class="line">str = <span class="string">"Android"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>不可变变量(常量)定义 val关键字 智能赋值一次的变量(类似java中final修饰)</p>
+<blockquote>
+<p>val &lt;标识符&gt; :  &lt;类型&gt; = &lt;初始化值&gt;</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> a : <span class="built_in">Int</span> = <span class="number">1</span></div><div class="line"><span class="comment">// 编译器支持自动类型判断 声明时可以不指定类型 由编译器判断。</span></div><div class="line"><span class="keyword">val</span> b = <span class="number">2</span></div><div class="line"><span class="comment">// 如果不在声明时初始化则必须提供变量类型</span></div><div class="line"><span class="keyword">val</span> c : <span class="built_in">Int</span></div><div class="line">c = <span class="number">3</span></div></pre></td></tr></table></figure>
+<p>注：变量与常量都可以没有初始化，但在引用前必须初始化</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>注释</p>
+<blockquote>
+<p>Kotlin与Java一样支持单行与多行注释</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 单行注释</span></div><div class="line"></div><div class="line"><span class="comment">/* 多行</span></div><div class="line"><span class="comment">   注释 */</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>字符串模版</p>
+<ul>
+<li>$ 使用变量名作为模版</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">val</span> str = <span class="string">"a is <span class="variable">$a</span>"</span>	<span class="comment">// "a is 1"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>${….} 使用表达式作为模版</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span></div><div class="line"><span class="keyword">val</span> s = <span class="string">"a is <span class="variable">$a</span>"</span></div><div class="line">a = <span class="number">2</span></div><div class="line"><span class="comment">// str 表示 a was 1,but now is 2</span></div><div class="line"><span class="keyword">val</span> str = <span class="string">"<span class="subst">$&#123;s.replace("is","was")&#125;</span>,but now is <span class="variable">$a</span>"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>NULL 检查机制 — 使用可空变量以及空值检查</p>
+<blockquote>
+<p>Kotlin 当空值可能出现时应该明确指出该引用可空</p>
+<p>当参数声明可为空时，使用时要进行空判断处理</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 类型后面加？ 表示可为空</span></div><div class="line"><span class="keyword">var</span> age: String? = <span class="string">"23"</span></div><div class="line"><span class="comment">// age声明可为空 使用时字段后加 !! 和java一样抛异常</span></div><div class="line"><span class="keyword">val</span> ages1 = age!!.toInt()</div><div class="line"><span class="comment">// 使用时字段后加 ? 不做处理返回值为null</span></div><div class="line"><span class="keyword">val</span> ages2 = age?.toInt()</div><div class="line"><span class="comment">// 使用字段后加 ? 再配合 ?: 做空判断处理</span></div><div class="line"><span class="keyword">val</span> age3: <span class="built_in">Int</span> = age?.toInt() ?: <span class="number">-1</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>类型检测及自动类型转换</p>
+<blockquote>
+<p>使用 is 运算符检测一个表达式是否是某个类型实例   </p>
+<p>如果对不可变的局部变量或属性进行过了类型检查，就没必要明确转换</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getStringLength</span><span class="params">(obj: <span class="type">Any</span>)</span></span>: <span class="built_in">Int</span>?&#123;</div><div class="line">    <span class="keyword">if</span>(obj <span class="keyword">is</span> String)&#123;</div><div class="line">        <span class="comment">// Smart cast to kotlin.String</span></div><div class="line">        <span class="keyword">return</span> obj.length</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 这里的 obj 仍然是 Any 类型的引用</span></div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 也可以写成</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getStringLength</span><span class="params">(obj: <span class="type">Any</span>)</span></span>: <span class="built_in">Int</span>?&#123;</div><div class="line">    <span class="keyword">if</span>(obj !<span class="keyword">is</span> String)</div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span></div><div class="line">    <span class="comment">// 在这个分支中 'obj' 会自动转换为 'String'</span></div><div class="line">    <span class="keyword">return</span> obj.length</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 或者写成</span></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getStringLength</span><span class="params">(obj: <span class="type">Any</span>)</span></span>: <span class="built_in">Int</span>? &#123;</div><div class="line">    <span class="comment">// 在 &amp;&amp; 运算符右侧  obj 的类型会被自动转换为 String</span></div><div class="line">    <span class="keyword">if</span> (obj <span class="keyword">is</span> String &amp;&amp; obj.length &gt; <span class="number">0</span>)</div><div class="line">    <span class="keyword">return</span> obj.length</div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>区间</p>
+<blockquote>
+<p>区间表达式具有操作符的形式 … 的 rangeTo 函数辅以 in 和 !in 形成</p>
+<p>区间是为任何可比较类型定义的，但对于整型原生类型。它有一个优化的实现</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 输出 12345</span></div><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.5</span>)</div><div class="line">	print(i)</div><div class="line"></div><div class="line"><span class="comment">// 没有输出</span></div><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">5.</span><span class="number">.1</span>)</div><div class="line">	print(i)</div><div class="line"></div><div class="line"><span class="comment">// 输出 135</span></div><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.5</span> step <span class="number">2</span>)</div><div class="line">	print(i)</div><div class="line"></div><div class="line"><span class="comment">// 输出 531</span></div><div class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">5</span> downTo <span class="number">1</span> step <span class="number">2</span>)	</div><div class="line">	print(i)</div><div class="line"></div><div class="line"><span class="comment">// 输出 123456789</span></div><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span> until <span class="number">10</span>)	</div><div class="line">	print(i)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h4><blockquote>
+<p>Kotlin 所有变量的成员方法和属性都是一个对象。一些类型是内建的，它们的实现是优化过的，使用时就像普通的类一样。以下介绍会到大多数类型：数值、字符、布尔及数组</p>
+</blockquote>
+<ul>
+<li><p>数字</p>
+<blockquote>
+<p>Kotlin 提供了如下的内置类型来表示数字</p>
+</blockquote>
+<p>|  Type  |  字节  |<br>| :—-: | :–: |<br>|  Byte  |  8   |<br>| Short  |  16  |<br>|  Int   |  32  |<br>|  Long  |  64  |<br>| Float  |  32  |<br>| Double |  64  |</p>
+<ul>
+<li><p>字面常量</p>
+<ul>
+<li><p>字面常量的表示：</p>
+<p>十进制:123    长整型:123L    16进制:0x0F    2进制:0b00001011</p>
+<p>浮点型  double:123.6 , 123.5e10    float:123.6f</p>
+<blockquote>
+<p>为了使数字常量更易读，可以使用下划线分隔</p>
+</blockquote>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> a = <span class="number">1</span>_000_000</div><div class="line"><span class="keyword">val</span> b = <span class="number">123</span>_456_789_000L</div><div class="line"><span class="keyword">val</span> c = <span class="number">0xFF</span>_EC_DE_5C</div><div class="line"><span class="keyword">val</span> d = <span class="number">0</span>b11010010_01101001_10010100_10010010</div></pre></td></tr></table></figure>
+</li>
+<li><p>数字大小比较</p>
+<p>Kotlin没有基础数据类型，只有封装的数字类型。定义一个变量时，其实是Kotlin封装了一个对象。</p>
+<p>三个等号 === 表示比较对象地址，两个等于号 == 表示比较值</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> a: <span class="built_in">Int</span> = <span class="number">10000</span></div><div class="line">println(a === a) <span class="comment">// 输出“true”</span></div><div class="line"><span class="keyword">val</span> boxedA: <span class="built_in">Int</span>? = a</div><div class="line"><span class="keyword">val</span> anotherBoxedA: <span class="built_in">Int</span>? = a</div><div class="line">println(boxedA == anotherBoxedA)  <span class="comment">// 值相同 输出true</span></div><div class="line">println(boxedA === anotherBoxedA) <span class="comment">// 对象地址不同 输出false</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>类型转换</p>
+<p>由于不同的表达方式，较小的类型不是较大类型的子类。不进行显示转换的话，不能将Byte型值赋给Int变量</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> a : <span class="built_in">Byte</span> = <span class="number">1</span></div><div class="line"><span class="keyword">val</span> b : <span class="built_in">Int</span> = a			<span class="comment">// error---Type mismatch</span></div><div class="line"><span class="keyword">val</span> c : <span class="built_in">Int</span> = a.toInt()	<span class="comment">// OK</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>每种数据离线都有对应方法转换为其他类型：toByte()，toShort()，toInt()，toLong()，toFloat()，toDouble()，toChar()</p>
+</blockquote>
+<p>算术运算时会有重载做适当转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val a = 1L + 2	// Long + Int -&gt; Long</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kotlin 语法 函数 变量</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:dingyx.tech/2017/01/16/Kotlin-语法-第一章/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/01/16/Android-6-0-System-Permissions/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Android 6.0 运行时权限说明与封装
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2016/11/03/Android-Immersive-Full-Screen-Mode/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 沉浸式模式与常见状态栏和导航栏</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -224,8 +440,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
