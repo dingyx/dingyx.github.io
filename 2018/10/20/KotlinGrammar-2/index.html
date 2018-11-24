@@ -15,7 +15,7 @@
 <meta property="og:url" content="dingyx.tech/2018/10/20/KotlinGrammar-2/index.html">
 <meta property="og:site_name" content="dyx&#39;s blog">
 <meta property="og:description" content="Kotlin 条件控制 IF 表达式 1234567// 打印 a,b 中较大的数if(a &amp;gt;b)	print(a)else	print(b)// 将 a,b 中较大数的值赋给 maxval max = if (a&amp;gt;b) a else b; 将 IF 表达式结果赋值给变量 12345678910val max = if(a&amp;gt;b)&amp;#123;    println(&quot;a&quot;)">
-<meta property="og:updated_time" content="2018-11-24T13:41:54.789Z">
+<meta property="og:updated_time" content="2018-11-24T14:01:14.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kotlin 条件与循环控制">
 <meta name="twitter:description" content="Kotlin 条件控制 IF 表达式 1234567// 打印 a,b 中较大的数if(a &amp;gt;b)	print(a)else	print(b)// 将 a,b 中较大数的值赋给 maxval max = if (a&amp;gt;b) a else b; 将 IF 表达式结果赋值给变量 12345678910val max = if(a&amp;gt;b)&amp;#123;    println(&quot;a&quot;)">
@@ -176,6 +176,7 @@
 <p>将 IF 表达式结果赋值给变量</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> max = <span class="keyword">if</span>(a&gt;b)&#123;</div><div class="line">    println(<span class="string">"a"</span>)</div><div class="line">    a</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span>&#123;</div><div class="line">    println(<span class="string">"b"</span>)</div><div class="line">    b</div><div class="line">&#125;</div><div class="line"><span class="comment">// 打印结果 4</span></div><div class="line">println(max)</div></pre></td></tr></table></figure>
 <p>使用区间–用 in 运算符检测某个数字是否在指定区间</p>
+<a id="more"></a>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">3</span></div><div class="line"><span class="keyword">if</span>(a <span class="keyword">in</span> <span class="number">1.</span><span class="number">.10</span>)&#123;</div><div class="line">    println(<span class="string">"a在区间内"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>When 表达式</p>
