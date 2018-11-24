@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="dingyx.tech">
-  <title>Tag: Kotlin | dyx&#39;s blog</title>
+  <title>Kotlin 类 对象 接口及器继承与扩展 | dyx&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Android Developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="dyx&#39;s blog">
-<meta property="og:url" content="dingyx.tech/tags/Kotlin/index.html">
+  <meta name="description" content="Kotlin对象表达式和对象声明Kotlin 用对象表达式和对象声明来实现创建一个对某个类做了轻微改动的类的对象，而且不需要去声明一个新的子类。  对象表达式 通过对象表达式实现一个匿名内部类的对象 1234567891011121314// 使用对象表达式实现一个匿名内部类对象，作为参数传递给 addMouseListener 方法window.addMouseListener(object :">
+<meta name="keywords" content="Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin 类 对象 接口及器继承与扩展">
+<meta property="og:url" content="dingyx.tech/2018/11/18/KotlinGrammar-5/index.html">
 <meta property="og:site_name" content="dyx&#39;s blog">
-<meta property="og:description" content="Android Developer">
+<meta property="og:description" content="Kotlin对象表达式和对象声明Kotlin 用对象表达式和对象声明来实现创建一个对某个类做了轻微改动的类的对象，而且不需要去声明一个新的子类。  对象表达式 通过对象表达式实现一个匿名内部类的对象 1234567891011121314// 使用对象表达式实现一个匿名内部类对象，作为参数传递给 addMouseListener 方法window.addMouseListener(object :">
+<meta property="og:updated_time" content="2018-11-24T13:48:21.032Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dyx&#39;s blog">
-<meta name="twitter:description" content="Android Developer">
+<meta name="twitter:title" content="Kotlin 类 对象 接口及器继承与扩展">
+<meta name="twitter:description" content="Kotlin对象表达式和对象声明Kotlin 用对象表达式和对象声明来实现创建一个对某个类做了轻微改动的类的对象，而且不需要去声明一个新的子类。  对象表达式 通过对象表达式实现一个匿名内部类的对象 1234567891011121314// 使用对象表达式实现一个匿名内部类对象，作为参数传递给 addMouseListener 方法window.addMouseListener(object :">
   
     <link rel="alternative" href="/atom.xml" title="dyx&#39;s blog" type="application/atom+xml">
   
@@ -148,36 +150,180 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-KotlinGrammar-5" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Kotlin 类 对象 接口及器继承与扩展
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/18/KotlinGrammar-5/" class="archive-article-date">
+
+        
+        <a href="/2018/11/18/KotlinGrammar-5/" class="archive-article-date">
   	<time datetime="2018-11-18T15:23:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-18</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/18/KotlinGrammar-5/">Kotlin 类 对象 接口及器继承与扩展</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Kotlin对象表达式和对象声明"><a href="#Kotlin对象表达式和对象声明" class="headerlink" title="Kotlin对象表达式和对象声明"></a>Kotlin对象表达式和对象声明</h3><p>Kotlin 用对象表达式和对象声明来实现创建一个对某个类做了轻微改动的类的对象，而且不需要去声明一个新的子类。</p>
+<ul>
+<li><p>对象表达式</p>
+<p>通过对象表达式实现一个匿名内部类的对象</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用对象表达式实现一个匿名内部类对象，作为参数传递给 addMouseListener 方法</span></div><div class="line">window.addMouseListener(<span class="keyword">object</span> : MouseAdapter() &#123;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> clickCount = <span class="number">0</span></div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">mouseClicked</span><span class="params">(e: <span class="type">MouseEvent</span>)</span></span> &#123;</div><div class="line">        <span class="comment">// 在对象表达中可以方便的访问到作用域中的其他变量</span></div><div class="line">        clickCount++</div><div class="line">        <span class="comment">// ...</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">mouseEntered</span><span class="params">(e: <span class="type">MouseEvent</span>)</span></span> &#123;</div><div class="line">        <span class="comment">// ...</span></div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>对象可以继承于某个基类，或者实现其他接口</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>(x: <span class="built_in">Int</span>) &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">open</span> <span class="keyword">val</span> y: <span class="built_in">Int</span> = x</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">B</span> </span>&#123;……&#125;</div><div class="line"></div><div class="line"><span class="keyword">val</span> ab: A = <span class="keyword">object</span> : A(<span class="number">1</span>), B &#123;</div><div class="line">    <span class="keyword">override</span> <span class="keyword">val</span> y = <span class="number">15</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：如果超类型有一个构造函数，则必须传递参数给它。多个超类型和接口可以用逗号分隔。</p>
+</blockquote>
+<p>通过对象表达式可以越过类定义直接得到一个对象</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">    <span class="keyword">val</span> person = <span class="keyword">object</span> &#123;</div><div class="line">        <span class="keyword">var</span> name: String = <span class="string">"dyx"</span></div><div class="line">        <span class="keyword">var</span> age: <span class="built_in">Int</span> = <span class="number">24</span></div><div class="line">    &#125;</div><div class="line">    println(person.name)</div><div class="line">    println(person.age)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>匿名对象可以用作只在本地和私有作用域中声明的类型。如果你使用匿名对象作为公有函数的 返回类型或者用作公有属性的类型，那么该函数或属性的实际类型 会是匿名对象声明的超类型，如果你没有声明任何超类型，就会是 Any。在匿名对象 中添加的成员将无法访问。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</div><div class="line">    <span class="comment">// 私有函数，所以其返回类型是匿名对象类型</span></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">foo</span><span class="params">()</span></span> = <span class="keyword">object</span> &#123;</div><div class="line">        <span class="keyword">val</span> x: String = <span class="string">"x"</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 公有函数，所以其返回类型是 Any</span></div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">publicFoo</span><span class="params">()</span></span> = <span class="keyword">object</span> &#123;</div><div class="line">        <span class="keyword">val</span> x: String = <span class="string">"x"</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">bar</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">val</span> x1 = foo().x        <span class="comment">// 没问题</span></div><div class="line">        <span class="keyword">val</span> x2 = publicFoo().x  <span class="comment">// 错误：未能解析的引用“x”</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>对象声明</p>
+<p>Kotlin 使用 object 关键字来声明一个对象</p>
+<p>Kotlin 中我们可以方便的通过对象声明来获得一个单例</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用 object 声明对象 默认称为单例</span></div><div class="line"><span class="keyword">object</span> DataProviderManager &#123;</div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">registerDataProvider</span><span class="params">(provider: <span class="type">DataProvider</span>)</span></span> &#123;</div><div class="line">        <span class="comment">// ……</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">val</span> allDataProviders: Collection&lt;DataProvider&gt;</div><div class="line">        <span class="keyword">get</span>() = <span class="comment">// ……</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 调用</span></div><div class="line">DataProviderManager.registerDataProvider(……)</div></pre></td></tr></table></figure>
+<p>对象可以有超类型：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">object</span> DefaultListener : MouseAdapter() &#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">mouseClicked</span><span class="params">(e: <span class="type">MouseEvent</span>)</span></span> &#123;</div><div class="line">        <span class="comment">// ……</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">mouseEntered</span><span class="params">(e: <span class="type">MouseEvent</span>)</span></span> &#123;</div><div class="line">        <span class="comment">// ……</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>与对象表达式不同，当对象声明在另一个类的内部时，这个对象并不能通过外部类的实例访问到该对象，而只能通过类名来访问，同样该对象也不能直接访问到外部类的方法和变量。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> you = <span class="string">"lh"</span></div><div class="line">    <span class="keyword">object</span> Test&#123;</div><div class="line">        <span class="keyword">var</span> url = <span class="string">"www.runoob.com"</span></div><div class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">showName</span><span class="params">()</span></span>&#123;</div><div class="line">            print&#123;<span class="string">"name： <span class="variable">$name</span>"</span>&#125; <span class="comment">// 错误，不能访问到外部类的方法和变量</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">    <span class="keyword">var</span> demo = Demo()</div><div class="line">    demo.Test.you <span class="comment">// 错误，不能通过外部类的实例访问到该对象</span></div><div class="line">    Deom.Test.you <span class="comment">// 正确</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>伴生对象</p>
+<p>类内部的对象声明可以用 companion 关键字标记，将它与外部类关联在一起。这样就可以通过外部类访问到对象的内部元素</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> Factory &#123;</div><div class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">create</span><span class="params">()</span></span>: MyClass = MyClass()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">val</span> instance = MyClass.create()   <span class="comment">// 访问到对象的内部元素</span></div></pre></td></tr></table></figure>
+<p>我们可以省略掉该对象的对象名，然后使用 Companion 替代需要声明的对象名：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">val</span> x = MyClass.Companion</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意：</strong>一个类里面只能声明一个内部关联对象，即关键字 companion 只能使用一次。</p>
+</blockquote>
+<p>伴生对象的成员看起来像其他语言的静态成员，但在运行时他们仍然是真实对象的实例成员。例如还可以实现接口：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Factory</span>&lt;<span class="type">T</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">create</span><span class="params">()</span></span>: T</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> : Factory&lt;MyClass&gt; &#123;</div><div class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">create</span><span class="params">()</span></span>: MyClass = MyClass()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>对象表达式和对象声明之间的差异</p>
+<ul>
+<li>对象表达式是在使用他们的地方立即执行的</li>
+<li>对象声明是在第一次被访问到时延迟初始化的</li>
+<li>伴生对象的初始化是在相应的类被加载（解析）时，与 Java 静态初始化器的语义相匹配</li>
+</ul>
+</li>
+</ul>
+<h3 id="Kotlin-委托"><a href="#Kotlin-委托" class="headerlink" title="Kotlin 委托"></a>Kotlin 委托</h3><p>委托模式是软件设计模式中的一项基本技巧。在委托模式中，有两个对象参与处理同一个请求，接受请求的对象将请求委托给另一个对象来处理。</p>
+<p>Kotlin 直接支持委托模式，更加优雅，简洁。Kotlin 通过关键字 by 实现委托。</p>
+<ul>
+<li><p>类委托</p>
+<p>类委托即一个类中定义的方法实际是调用另一个类的对象的方法来实现的。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建接口</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Base</span> </span>&#123;   </div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">print</span><span class="params">()</span></span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 实现此接口的被委托的类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseImpl</span></span>(<span class="keyword">val</span> x: <span class="built_in">Int</span>) : Base &#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">print</span><span class="params">()</span></span> &#123; print(x) &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 通过关键字 by 建立委托类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span></span>(b: Base) : Base <span class="keyword">by</span> b</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">    <span class="keyword">val</span> b = BaseImpl(<span class="number">10</span>)</div><div class="line">    Derived(b).print() <span class="comment">// 输出 10</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 在 Derived 声明中，by 子句表示，将 b 保存在 Derived 的对象实例内部，而且编译器将会生成继承自 Base 接口的所有方法, 并将调用转发给 b。</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>属性委托</p>
+<p>属性委托是指的一个类的某个属性值不是在类中直接进行定义，而是将其托付给另一个代理类，从而实现对该类属性统一管理。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 基本语法</span></div><div class="line"><span class="keyword">val</span>/<span class="keyword">var</span> &lt;属性名&gt;: &lt;类型&gt; <span class="keyword">by</span> &lt;表达式&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>by 关键字之后的表达式就是委托, 属性的 get() 方法(以及set() 方法)将被委托给这个对象的 getValue() 和 setValue() 方法。属性委托不必实现任何接口, 但必须提供 getValue() 函数(对于 var属性,还需要 setValue() 函数)。</p>
+</blockquote>
+<ul>
+<li><p>定义一个被委托的类</p>
+<p>该类需要包含 getValue() 方法和 setValue() 方法，且参数 thisRef 为进行委托的类的对象，prop 为进行委托的属性的对象。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> kotlin.reflect.KProperty</div><div class="line"><span class="comment">// 定义包含属性委托的类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> p: String <span class="keyword">by</span> Delegate()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 委托的类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Delegate</span> </span>&#123;</div><div class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">getValue</span><span class="params">(thisRef: <span class="type">Any</span>?, property: <span class="type">KProperty</span>&lt;*&gt;)</span></span>: String &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"<span class="variable">$thisRef</span>, 这里委托了 <span class="subst">$&#123;property.name&#125;</span> 属性"</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">setValue</span><span class="params">(thisRef: <span class="type">Any</span>?, property: <span class="type">KProperty</span>&lt;*&gt;, value: <span class="type">String</span>)</span></span> &#123;</div><div class="line">        println(<span class="string">"<span class="variable">$thisRef</span> 的 <span class="subst">$&#123;property.name&#125;</span> 属性赋值为 <span class="variable">$value</span>"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//调用</span></div><div class="line"><span class="keyword">val</span> e = Example()</div><div class="line">println(e.p)     <span class="comment">// 访问该属性，调用 getValue() 函数</span></div><div class="line">e.p = <span class="string">"Runoob"</span>   <span class="comment">// 调用 setValue() 函数</span></div><div class="line">println(e.p)</div><div class="line"></div><div class="line"><span class="comment">// 输出结果 </span></div><div class="line"><span class="comment">// Example@433c675d, 这里委托了 p 属性</span></div><div class="line"><span class="comment">// Example@433c675d 的 p 属性赋值为 Runoob</span></div><div class="line"><span class="comment">// Example@433c675d, 这里委托了 p 属性</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>标准委托</p>
+<p>Kotlin 的标准库中已经内置了很多工厂方法来实现属性的委托。</p>
+<ul>
+<li><p>延迟属性 Lazy</p>
+<p>lazy() 是一个函数, 接受一个 Lambda 表达式作为参数, 返回一个 Lazy <t> 实例的函数，返回的实例可以作为实现延迟属性的委托： 第一次调用 get() 会执行已传递给 lazy() 的 lamda 表达式并记录结果， 后续调用 get() 只是返回记录的结果。</t></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> lazyValue: String <span class="keyword">by</span> lazy &#123;</div><div class="line">    println(<span class="string">"computed!"</span>)     <span class="comment">// 第一次调用输出，第二次调用不执行</span></div><div class="line">    <span class="string">"Hello"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">println(lazyValue)   <span class="comment">// 第一次执行，执行两次输出表达式</span></div><div class="line">println(lazyValue)   <span class="comment">// 第二次执行，只输出返回值</span></div><div class="line"></div><div class="line"><span class="comment">// 输出结果computed!  Hello  Hello</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>可观察属性 Observable</p>
+<p>observable 可以用于实现观察者模式。</p>
+<p>Delegates.observable() 函数接受两个参数: 第一个是初始化值, 第二个是属性值变化事件的响应器(handler)。</p>
+<p>在属性赋值后会执行事件的响应器(handler)，它有三个参数：被赋值的属性、旧值和新值：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> kotlin.properties.Delegates</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: String <span class="keyword">by</span> Delegates.observable(<span class="string">"初始值"</span>) &#123;</div><div class="line">        prop, old, new -&gt;</div><div class="line">        println(<span class="string">"旧值：<span class="variable">$old</span> -&gt; 新值：<span class="variable">$new</span>"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 调用</span></div><div class="line"><span class="keyword">val</span> user = User()</div><div class="line">user.name = <span class="string">"第一次赋值"</span></div><div class="line">user.name = <span class="string">"第二次赋值"</span></div><div class="line"></div><div class="line"> <span class="comment">// 输出结果</span></div><div class="line"><span class="comment">// 旧值：初始值 -&gt; 新值：第一次赋值</span></div><div class="line"><span class="comment">// 旧值：第一次赋值 -&gt; 新值：第二次赋值</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>把属性存储在映射中</p>
+<p>一个常见的用例是在一个映射（map）里存储属性的值。 这经常出现在像解析 JSON 或者做其他”动态”事情的应用中。 在这种情况下，你可以使用映射实例自身作为委托来实现委托属性。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Site</span></span>(<span class="keyword">val</span> map: Map&lt;String, Any?&gt;) &#123;</div><div class="line">    <span class="keyword">val</span> name: String <span class="keyword">by</span> map</div><div class="line">    <span class="keyword">val</span> url: String  <span class="keyword">by</span> map</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 调用</span></div><div class="line">    <span class="comment">// 构造函数接受一个映射参数</span></div><div class="line"><span class="keyword">val</span> site = Site(mapOf(</div><div class="line">    <span class="string">"name"</span> to <span class="string">"dyx"</span>,</div><div class="line">    <span class="string">"url"</span>  to <span class="string">"dingyx.ink"</span></div><div class="line">))</div><div class="line"></div><div class="line"><span class="comment">// 读取映射值</span></div><div class="line">println(site.name)</div><div class="line">println(site.url)</div><div class="line"></div><div class="line"><span class="comment">// 输出结果 dyx  dingyx.ink</span></div></pre></td></tr></table></figure>
+<p>如果使用 var 属性，需要把 Map 换成 MutableMap</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Site</span></span>(<span class="keyword">val</span> map: MutableMap&lt;String, Any?&gt;) &#123;</div><div class="line">    <span class="keyword">val</span> name: String <span class="keyword">by</span> map</div><div class="line">    <span class="keyword">val</span> url: String <span class="keyword">by</span> map</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 调用</span></div><div class="line"><span class="keyword">var</span> map:MutableMap&lt;String, Any?&gt; = mutableMapOf(</div><div class="line">    <span class="string">"name"</span> to <span class="string">"dyx"</span>,</div><div class="line">    <span class="string">"url"</span> to <span class="string">"dingyx.ink"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">val</span> site = Site(map)</div><div class="line"></div><div class="line">println(site.name)</div><div class="line">println(site.url)</div><div class="line"></div><div class="line">map.put(<span class="string">"name"</span>, <span class="string">"Google"</span>)</div><div class="line">map.put(<span class="string">"url"</span>, <span class="string">"www.google.com"</span>)</div><div class="line"></div><div class="line">println(site.name)</div><div class="line">println(site.url)</div><div class="line"></div><div class="line"><span class="comment">// 输出结果：</span></div><div class="line"><span class="comment">// dyx</span></div><div class="line"><span class="comment">// dingyx.ink</span></div><div class="line"><span class="comment">// Google</span></div><div class="line"><span class="comment">// www.google.com</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Not Null</p>
+<p>notNull 适用于那些无法在初始化阶段就确定属性值的场合。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> notNullBar: String <span class="keyword">by</span> Delegates.notNull&lt;String&gt;()</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo.notNullBar = <span class="string">"bar"</span></div><div class="line">println(foo.notNullBar)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：如果属性在赋值前就被访问的话则会抛出异常。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>局部委托属性</p>
+<p>可以将局部变量声明为委托属性。 例如，使一个局部变量惰性初始化：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">example</span><span class="params">(computeFoo: ()</span></span> -&gt; Foo) &#123;</div><div class="line">    <span class="keyword">val</span> memoizedFoo <span class="keyword">by</span> lazy(computeFoo)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (someCondition &amp;&amp; memoizedFoo.isValid()) &#123;</div><div class="line">        memoizedFoo.doSomething()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>memoizedFoo 变量只会在第一次访问时计算。 如果 someCondition 失败，那么该变量根本不会计算。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>属性委托要求</p>
+<p>对于只读属性(也就是说val属性), 它的委托必须提供一个名为getValue()的函数。该函数接受以下参数：</p>
+<ul>
+<li>thisRef —— 必须与属性所有者类型（对于扩展属性——指被扩展的类型）相同或者是它的超类型</li>
+<li>property —— 必须是类型 KProperty&lt;*&gt; 或其超类型</li>
+</ul>
+<p>这个函数必须返回与属性相同的类型（或其子类型）。</p>
+<p>对于一个值可变(mutable)属性(也就是说,var 属性),除 getValue()函数之外,它的委托还必须 另外再提供一个名为setValue()的函数, 这个函数接受以下参数:</p>
+<ul>
+<li><p>property —— 必须是类型 KProperty&lt;*&gt; 或其超类型</p>
+</li>
+<li><p>new value —— 必须和属性同类型或者是它的超类型。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>翻译规则</p>
+<p>在每个委托属性的实现的背后，Kotlin 编译器都会生成辅助属性并委托给它。 例如，对于属性 prop，生成隐藏属性 prop$delegate，而访问器的代码只是简单地委托给这个附加属性：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> prop: Type <span class="keyword">by</span> MyDelegate()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 这段是由编译器生成的相应代码：</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">val</span> prop$delegate = MyDelegate()</div><div class="line">    <span class="keyword">var</span> prop: Type</div><div class="line">        <span class="keyword">get</span>() = prop$delegate.getValue(<span class="keyword">this</span>, <span class="keyword">this</span>::prop)</div><div class="line">        <span class="keyword">set</span>(value: Type) = prop$delegate.setValue(<span class="keyword">this</span>, <span class="keyword">this</span>::prop, value)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Kotlin 编译器在参数中提供了关于 prop 的所有必要信息：第一个参数 this 引用到外部类 C 的实例而 this::prop 是 KProperty 类型的反射对象，该对象描述 prop 自身。</p>
+</li>
+</ul>
+<ul>
+<li><p>提供委托</p>
+<p>通过定义 provideDelegate 操作符，可以扩展创建属性实现所委托对象的逻辑。 如果 by 右侧所使用的对象将 provideDelegate 定义为成员或扩展函数，那么会调用该函数来 创建属性委托实例。</p>
+<p>provideDelegate 的一个可能的使用场景是在创建属性时（而不仅在其 getter 或 setter 中）检查属性一致性。</p>
+<p>例如，如果要在绑定之前检查属性名称，可以这样写：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResourceLoader</span>&lt;<span class="type">T</span>&gt;</span>(id: ResourceID&lt;T&gt;) &#123;</div><div class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">provideDelegate</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">            thisRef: <span class="type">MyUI</span>,</span></span></div><div class="line"><span class="function"><span class="params">            prop: <span class="type">KProperty</span>&lt;*&gt;</span></span></div><div class="line"><span class="function"><span class="params">    )</span></span>: ReadOnlyProperty&lt;MyUI, T&gt; &#123;</div><div class="line">        checkProperty(thisRef, prop.name)</div><div class="line">        <span class="comment">// 创建委托</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">checkProperty</span><span class="params">(thisRef: <span class="type">MyUI</span>, name: <span class="type">String</span>)</span></span> &#123; …… &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">bindResource</span><span class="params">(id: <span class="type">ResourceID</span>&lt;<span class="type">T</span>&gt;)</span></span>: ResourceLoader&lt;T&gt; &#123; …… &#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyUI</span> </span>&#123;</div><div class="line">    <span class="keyword">val</span> image <span class="keyword">by</span> bindResource(ResourceID.image_id)</div><div class="line">    <span class="keyword">val</span> text <span class="keyword">by</span> bindResource(ResourceID.text_id)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>provideDelegate 的参数与 getValue 相同：</p>
+<ul>
+<li>thisRef —— 必须与 属性所有者 类型（对于扩展属性——指被扩展的类型）相同或者是它的超类型</li>
+<li>property —— 必须是类型 KProperty&lt;*&gt; 或其超类型。</li>
+</ul>
+<p>在创建 MyUI 实例期间，为每个属性调用 provideDelegate 方法，并立即执行必要的验证。</p>
+<p>如果没有这种拦截属性与其委托之间的绑定的能力，为了实现相同的功能， 你必须显式传递属性名，这不是很方便：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 检查属性名称而不使用“provideDelegate”功能</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyUI</span> </span>&#123;</div><div class="line">    <span class="keyword">val</span> image <span class="keyword">by</span> bindResource(ResourceID.image_id, <span class="string">"image"</span>)</div><div class="line">    <span class="keyword">val</span> text <span class="keyword">by</span> bindResource(ResourceID.text_id, <span class="string">"text"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> MyUI.<span class="title">bindResource</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">        id: <span class="type">ResourceID</span>&lt;<span class="type">T</span>&gt;,</span></span></div><div class="line"><span class="function"><span class="params">        propertyName: <span class="type">String</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>: ReadOnlyProperty&lt;MyUI, T&gt; &#123;</div><div class="line">   checkProperty(<span class="keyword">this</span>, propertyName)</div><div class="line">   <span class="comment">// 创建委托</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在生成的代码中，会调用 provideDelegate 方法来初始化辅助的 prop$delegate 属性。 比较对于属性声明 val prop: Type by MyDelegate() 生成的代码与 上面（当 provideDelegate 方法不存在时）生成的代码：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> prop: Type <span class="keyword">by</span> MyDelegate()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 这段代码是当“provideDelegate”功能可用时</span></div><div class="line"><span class="comment">// 由编译器生成的代码：</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</div><div class="line">    <span class="comment">// 调用“provideDelegate”来创建额外的“delegate”属性</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">val</span> prop$delegate = MyDelegate().provideDelegate(<span class="keyword">this</span>, <span class="keyword">this</span>::prop)</div><div class="line">    <span class="keyword">val</span> prop: Type</div><div class="line">        <span class="keyword">get</span>() = prop$delegate.getValue(<span class="keyword">this</span>, <span class="keyword">this</span>::prop)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，provideDelegate 方法只影响辅助属性的创建，并不会影响为 getter 或 setter 生成的代码。</p>
+</blockquote>
+</li>
+</ul>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,171 +335,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:dingyx.tech/2018/11/18/KotlinGrammar-5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/04/KotlinGrammar-4/" class="archive-article-date">
-  	<time datetime="2018-11-04T02:09:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/04/KotlinGrammar-4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kotlin数据类与密封类、泛型、枚举类</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/04/KotlinGrammar-4/">Kotlin数据类与密封类、泛型、枚举类</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/25/KotlinGrammar-3/" class="archive-article-date">
-  	<time datetime="2018-10-25T03:09:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/25/KotlinGrammar-3/">Kotlin 类 对象 接口及器继承与扩展</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/20/KotlinGrammar-2/" class="archive-article-date">
-  	<time datetime="2018-10-20T11:29:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/20/KotlinGrammar-2/">Kotlin 条件与循环控制</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/16/KotlinGrammar-1/" class="archive-article-date">
-  	<time datetime="2018-10-16T12:20:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/16/KotlinGrammar-1/">Kotlin 基础语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kotlin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -376,9 +457,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
